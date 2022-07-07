@@ -1,0 +1,50 @@
+<section id="novedad">
+    <h1><span ng-show="novedad.data.nuevo">Agregar novedad</span><span ng-hide="novedad.data.nuevo">{{ novedad.data.titulo }}</span></h1>
+    <nav>
+        <span ng-click="novedad.guardar()">Guardar</span>
+        <span ng-click="app.ir('novedades')">Volver</span>
+    </nav>
+    
+    <form name="formularioNovedad" novalidate>
+        <div class="titulo">
+            <label>Titulo</label>
+            <input type="text" required name="titulo" ng-model="novedad.data.titulo">
+        </div><!--
+        --><div>
+            <label>Categoría</label>
+            <select required name="categoria" ng-model="novedad.data.categoria">
+                <option>Moda</option>
+                <option>Cine</option>
+                <option>Farándula</option>
+                <option>Salud</option>
+                <option>Mujer</option>
+                <option>Tecnología</option>
+                <option>Actualidad</option>
+                <option>Efeméride</option>
+                <option>Trabajo</option>
+                <option>Música</option>
+            </select>
+        </div><!--
+        --><div>
+            <label>Video (ID Youtube)</label>
+            <input type="text" name="video" ng-model="novedad.data.video">
+        </div><!--
+        --><div class="contenido">
+            <label>Contenido</label>
+            <textarea required name="contenido" ng-model="novedad.data.contenido"></textarea>
+        </div><!--
+        --><div class="portada" ng-click="novedad.seleccionar('portada')">
+            <label>Portada (238 x 238)</label>
+            <img ng-src="catalogo/novedades/{{novedad.data.id}}.jpg" ng-hide="novedad.data.nuevaPortada">
+            <img class="foto" ng-show="novedad.data.nuevaPortada" ngf-thumbnail="novedad.data.nuevaPortada">
+            <input type="file" id="imagen-portada" name="portada" ng-model="novedad.data.nuevaPortada" ngf-select ngf-accept="image/jpeg">
+        </div><!--
+        --><div class="encabezado" ng-click="novedad.seleccionar('encabezado')">
+            <label>Encabezado</label>
+            <img ng-src="catalogo/novedades/{{novedad.data.id}}-1.jpg" ng-hide="novedad.data.nuevoEncabezado">
+            <img class="foto" ng-show="novedad.data.nuevoEncabezado" ngf-thumbnail="novedad.data.nuevoEncabezado">
+            <input type="file" id="imagen-encabezado" name="encabezado" ng-model="novedad.data.nuevoEncabezado" ngf-select ngf-accept="image/jpeg">
+        </div>
+    </form>
+    <div class="cargando" ng-show="novedad.cargando"></div>
+</section>

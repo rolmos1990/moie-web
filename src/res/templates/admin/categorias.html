@@ -1,0 +1,50 @@
+<section id="categorias">
+    <h1>Categorías</h1>
+    <nav>
+        <span ng-click="categorias.nueva()">Nueva categoría</span>
+    </nav>
+    <div class="mensaje" ng-show="categorias.mostrarFaltantes" ng-class="{'error':categorias.faltantes.length,'exito':!categorias.faltantes.length}">
+        <b ng-if="!categorias.faltantes.length">No hay piezas faltantes</b>
+        <b ng-if="categorias.faltantes.length">Piezas faltantes:</b>
+        <span ng-repeat="f in categorias.faltantes">{{ f }}</span>
+    </div>
+    <div ui-sortable="categorias.ordenar" ng-model="categorias.lista">
+        <div class="categoria" ng-repeat="c in categorias.lista">
+            <h4>{{ c.nombre }}</h4>
+            <div class="encabezado">
+                <img ng-src="catalogo/{{ c.id }}/config/encabezado.jpg?{{ c.actualizacion }}">
+            </div>
+            <div class="portada">
+                <img ng-src="catalogo/{{ c.id }}/config/portada.png?{{ c.actualizacion }}">
+            </div><!--
+            --><div class="opciones">
+                <input type="file" id="encabezado{{ c.id }}" ngf-select="categorias.subir('encabezado',c.id,$file)" ngf-accept="'image/jpeg'">
+                <input type="file" id="portada{{ c.id }}" ngf-select="categorias.subir('portada',c.id,$file)" ngf-accept="'image/png'">
+                <button ng-click="app.ir('categoria/' + c.id)">Ver álbum</button>
+                <button ng-click="categorias.cambiarNombre(c)">Cambiar Nombre</button>
+                <button ng-click="categorias.seleccionar('encabezado',c.id)">Cargar Encabezado</button>
+                <button ng-click="categorias.seleccionar('portada',c.id)">Cargar Portada</button>
+                <button ng-click="categorias.eliminar(c)">Eliminar</button>
+            </div>
+        </div>
+    </div>
+    <div>
+        <h3>Categorias Especiales</h3>
+        <div class="categoria">
+            <h4>Compras al Mayor</h4>
+            <div class="encabezado">
+                <img ng-src="http://www.lucymodas.com/catalogo/mayor/config/encabezado.jpg?{{ categorias.fechaActual }}">
+            </div>
+            <div class="portada">
+                <img ng-src="http://www.lucymodas.com/catalogo/mayor/config/portada.png?{{ categorias.fechaActual }}">
+            </div><!--
+            --><div class="opciones">
+                <input type="file" id="encabezadomayor" ngf-select="categorias.subir('encabezado','mayor',$file)" ngf-accept="'image/jpeg'">
+                <input type="file" id="portadamayor" ngf-select="categorias.subir('portada','mayor',$file)" ngf-accept="'image/png'">
+                <button ng-click="categorias.seleccionar('encabezado','mayor')">Cargar Encabezado</button>
+                <button ng-click="categorias.seleccionar('portada','mayor')">Cargar Portada</button>
+            </div>
+        </div>
+    </div>
+    <div class="cargando" ng-show="categorias.cargando"></div>
+</section>

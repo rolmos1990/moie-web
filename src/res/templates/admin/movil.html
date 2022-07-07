@@ -1,0 +1,13 @@
+<section id="movil">
+    <h1>Descargas de App Móvil</h1>
+    <nav>
+        <span ng-model="movil.fecha.inicial" aa-date-input>
+            Fecha Inicial: {{ movil.fecha.inicial | date: 'dd-MM-yyyy' }}
+        </span>
+        <span ng-model="movil.fecha.final" aa-date-input>
+            Fecha Final: {{ movil.fecha.final | date: 'dd-MM-yyyy' }}
+        </span>
+    </nav>
+    <linechart data="movil.lista" options="movil.opciones" mode="" width="" height="500"></linechart>
+    <div class="cargando" ng-show="movil.cargando"></div>
+</section>

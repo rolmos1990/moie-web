@@ -1,0 +1,32 @@
+<section id="comentarios">
+    <h1>Comentarios</h1>
+<!--    <nav>
+        <input type="file" id="nueva-imagen" ngf-select="rotativo.subir($file)" ngf-accept="'image/jpeg'">
+        <span ng-click="rotativo.seleccionar()">Nueva imagen</span>
+    </nav>-->
+    <div>
+        <div class="comentario" ng-repeat="c in comentarios.lista" ng-class="{aprobado: c.aprobado*1}">
+            <h4>{{ c.nombre }}</h4>
+            <cite>{{ c.fecha | fechaMysqlAIso | date:"d/M/y" }}</cite>
+            <b>
+                <span ng-show="c.experiencia >= 1">&#9733;</span>
+                <span ng-show="c.experiencia >= 2">&#9733;</span>
+                <span ng-show="c.experiencia >= 3">&#9733;</span>
+                <span ng-show="c.experiencia >= 4">&#9733;</span>
+                <span ng-show="c.experiencia >= 5">&#9733;</span>
+            </b>
+            <p>{{ c.comentario }}</p>
+            <p ng-if="c.mejor">Lo que más me gustó: {{ c.mejor }}</p>
+            <div class="opciones">
+                <span ng-click="comentarios.aprobar(c)">
+                    <img ng-hide="c.aprobado*1" src="res/img/admin/mostrar.png" />
+                    <img ng-show="c.aprobado*1" src="res/img/admin/ocultar.png" />
+                </span>
+                <span ng-click="comentarios.eliminar(c)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="cargando" ng-show="comentarios.cargando"></div>
+</section>

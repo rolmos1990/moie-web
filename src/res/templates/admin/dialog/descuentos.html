@@ -1,0 +1,25 @@
+<div class="ngdialog-message">
+    <p>Introduzca la cantidad de piezas y el descuento correspondiente</p>
+    <table>
+        <tr>
+            <td>Piezas</td>
+            <td>Descuento (%)</td>
+        </tr>
+        <tr>
+            <td>Detal</td>
+            <td><input class="ngdialog-input" type="number" min="0" max="100" ng-model="dialog.descuento.detal" /></td>
+        </tr>
+        <tr>
+            <td><input class="ngdialog-input" type="number" step="1" ng-model="dialog.descuento.descuento1.cantidad" /></td>
+            <td><input class="ngdialog-input" type="number" min="0" max="100" ng-model="dialog.descuento.descuento1.porcentaje" /></td>
+        </tr>
+        <tr>
+            <td><input class="ngdialog-input" type="number" step="1" ng-model="dialog.descuento.descuento2.cantidad" /></td>
+            <td><input class="ngdialog-input" type="number" min="0" max="100" ng-model="dialog.descuento.descuento2.porcentaje" /></td>
+        </tr>
+    </table>
+</div>
+<div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(dialog.descuento)">Si</button>
+    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('no')">No</button>
+</div>

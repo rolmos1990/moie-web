@@ -1,0 +1,143 @@
+body{
+    width:790px;
+    margin:auto;
+    font-size:13px;
+    font-family:'Century Gothic',Tahoma,Verdana,sans-serif;
+    position:relative;
+}
+nav{
+    width:35%;
+    position:absolute;
+    top:0;
+    left:0;
+}
+nav ul{
+    list-style-type: none;
+    padding:0;
+    margin:0;
+    border-right: #917 solid 1px;
+}
+nav ul li{
+    width:100%;
+    height:40px;
+}
+nav ul li a{
+    color: #333;
+    text-decoration: none;
+    text-align: right;
+    padding-right:5%;
+    width:95%;
+    display:block;
+    line-height: 40px;
+    vertical-align:middle;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+nav ul li a:visited,nav ul li a:link{
+    text-decoration:none;
+}
+nav ul li a:hover{
+    font-weight: bold;
+    color:#fff;
+    background-color: #917;
+}
+.seleccionado{
+    font-weight: bold;
+    color:#fff;
+    background-color: #917;
+}
+.seleccionado:before{
+    content:">> ";
+}
+section{
+    width:65%;
+    position:absolute;
+    top:0;
+    left:35%;
+    height:800px;
+    overflow-y: scroll;
+}
+.item{
+    width:255px;
+    margin: 5px 3px 0px 5px;
+    height:142px;
+    background:#f1f1f1;
+    float:left;
+    cursor:pointer;
+    position:relative;
+}
+.item a{
+    text-decoration:none;
+}
+.item h4{
+    font-size: 12px;
+    width:250px;
+    height:18px;
+    line-height:18px;
+    margin:0;
+    padding-left:5px;
+    
+    text-align: left;
+    color:#fff;
+    text-shadow: black 0.1em 0.1em 0.2em;
+    background-color: rgba(222,12,112,0.8);
+    position:absolute;
+    bottom:0;
+}
+
+article{
+    width:45%;
+    margin:2.5%;
+    height:440px;
+    float:left;
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+}
+article img{
+    width: 100%;
+    height: 357px;
+    display:block;
+}
+.producto_datos{
+    width:100%;
+    background-color: #424242;
+    color: #fff;
+    text-align: left;
+}
+.producto_codigo{
+    width:90%;
+    padding:5px 5%;
+}
+.producto_codigo span{
+    font-size:1.4em;
+    font-weight: bold;
+}
+.producto_precio{
+    width:90%;
+    padding:5px 5%;
+}
+.producto_precio_mayor{
+    width:90%;
+    padding: 0 5%;
+    height: 25px;
+}
+.producto_precio span{
+    color: lightgrey;
+    text-decoration: line-through;
+}
+.producto_precio b,.producto_precio_mayor b{
+    font-size:1.4em;
+    color: #FFFFFF;
+    font-weight: bold;
+    text-decoration: none;
+    /*text-shadow: white 0.1em 0.1em 0.2em;*/
+}
+.producto_precio b:before, .producto_precio_mayor b:before, .producto_precio span:before{
+    content: "$";
+}
+.producto_precio_descuento{
+    width:100%;
+    height: 30px;
+}

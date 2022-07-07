@@ -1,0 +1,363 @@
+body{
+    width: 1000px;
+    margin: auto;
+    font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+}
+header{
+    width: 100%;
+    border-bottom: #ccc solid 1px;
+}
+header div{
+    display: inline-block;
+}
+#logo{
+    width: 172px;
+}
+#logo img{
+    width:100%;
+}
+#secciones{
+    width: 828px;
+}
+#sesion span{
+    cursor: pointer;
+}
+#sesion span:hover{
+    font-weight: bold;
+    color:red;
+}
+header nav span{
+    cursor: pointer;
+    padding: 5px 20px 0 20px;
+    border-radius: 5px 5px 0 0;
+    border-top: #ccc solid 1px;
+    border-left: #ccc solid 1px;
+    border-right: #ccc solid 1px;
+}
+header nav span:hover{
+    padding-top: 10px;
+}
+header nav span.activo{
+    background-color: #ddd;
+    padding-top: 10px;
+}
+section{
+    width: 100%;
+}
+section nav{
+    border-top: #ccc solid 1px;
+    border-bottom: #ccc solid 1px;
+    margin-bottom: 15px;
+}
+section nav span{
+    display: inline-block;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+section nav span:hover{
+    font-weight: bold;
+}
+.categoria{
+    width:40%;
+    margin: 20px 5%;
+    display: inline-block;
+}
+.categoria *{
+    display: inline-block;
+}
+.categoria h4{
+    margin: 0;
+    padding: 0;
+    background-color: #ddd;
+    padding: 2px 1%;
+    width: 98%;
+}
+.categoria .encabezado{
+    width: 100%;
+    margin-bottom: 5px;
+}
+.categoria .encabezado img{
+    width: 100%;
+    height: 120px;
+}
+.categoria .portada{
+    width: 60%;
+    height: 117px;
+}
+.categoria .portada img{
+    width: 100%;
+    vertical-align: top;
+}
+.categoria .opciones{
+    width: 40%;
+    vertical-align: top;
+}
+.categoria .opciones button{
+    display: inline-block;
+    width: 95%;
+    margin-left: 5%;
+    margin-bottom: 4px;
+    background-color: #eee;
+    border: #ccc solid 1px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.categoria .opciones button:hover{
+    background-color: #ddd;
+}
+input[type="file"]{
+    display: none;
+}
+.producto{
+    width: 23%;
+    margin: 5px 1%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.producto.agotado .imagen{
+    opacity: 0.3;
+}
+.producto .imagen img{
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.producto .datos{
+    width: 100%;
+    font-size: 1.3em;
+    margin-top: 150%;
+    background-color: #ddd;
+}
+.producto .datos span{
+    display: inline-block;
+}
+.producto:hover .datos .codigo{
+    font-weight: bold;
+}
+.producto .datos .codigo{
+    width: 30%;
+}
+.producto .datos .precio{
+    width: 70%;
+    text-align: right;
+}
+.imagen-rotativa{
+    width: 23%;
+    margin: 5px 1%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    position: relative;
+}
+.imagen-rotativa img{
+    width: 100%;
+}
+.imagen-rotativa select{
+    width: 100%;
+}
+.imagen-rotativa .opciones,.producto .opciones,.comentario .opciones,.novedad .opciones,.producto .opciones, #producto li .opciones, #novedad li .opciones{
+    opacity: 0;
+    position:absolute;
+    top: 5px;
+    right: 5px;
+    transition: all 0.2s linear;
+}
+.imagen-rotativa:hover .opciones,.producto:hover .opciones, .comentario:hover .opciones, .novedad:hover .opciones, #producto li:hover .opciones, #novedad li:hover .opciones{
+    opacity: 1;
+}
+.imagen-rotativa .opciones span,.producto .opciones span,.comentario .opciones span,.novedad .opciones span, #producto li .opciones span, #novedad li .opciones span{
+    width: 32px;
+    height: 32px;
+    padding: 4px;
+    border-radius: 20px;
+    background-color: #FFF;
+    display: inline-block;
+    opacity: 0.7;
+    cursor: pointer;
+}
+.imagen-rotativa .opciones span img,.producto .opciones span img,.comentario .opciones span img,.novedad .opciones span img, #producto li .opciones span img, #novedad li .opciones span img{
+    width: 32px;
+}
+.imagen-rotativa .opciones span:hover,.producto .opciones span:hover,.comentario .opciones span:hover,.novedad .opciones span:hover, #producto li .opciones span:hover, #novedad li .opciones span:hover{
+    opacity: 1;
+}
+.comentario, .novedad{
+    width: calc(23% - 3px);
+    height: 200px;
+    overflow-y: auto;
+    margin: 5px 1%;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    border: #ccc solid 1px;
+    padding: 15px 0;
+}
+.comentario.aprobado{
+    background-color: rgb(102,227,157);
+}
+.comentario h4,.comentario cite,.comentario b,.comentario p{
+    width: 100%;
+    display: inline-block;
+    margin:0;
+    overflow-x: hidden;
+    text-align: center;
+}
+.comentario cite{
+    font-size: 0.8em;
+}
+.comentario b{
+    color: rgb(227,102,157);
+    margin-bottom: 10px;
+}
+.novedad .imagen{
+    position: absolute;
+    width: 100%;
+    top:0;
+    left:0;
+}
+.novedad .imagen img{
+    max-width:100%;
+    max-height: 100%;
+    opacity: 0.25;
+}
+.novedad h4{
+    position: absolute;
+    width: 100%;
+    display: inline-block;
+    margin:0;
+    overflow-x: hidden;
+    text-align: center;
+    bottom: 10px;
+    z-index: 1;
+}
+#producto ul{
+    width: 100%;
+    height: 345px;
+    background-color: #ddd;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+}
+#producto li{
+    width: 230px;
+    height: 345px;
+    padding: 0;
+    margin: 0 4px;
+    display: inline-block;
+    position: relative;
+    background-color: #333;
+}
+#producto li span.seleccionar img{
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    padding: 108.5px 51px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+#producto li img.foto{
+    width:230px;
+    height:345px;
+}
+#producto form, #novedad form{
+    width: 706px;
+    margin: 10px auto;
+}
+#producto form div,#novedad form div{
+    width: 45%;
+    margin: 0 2.5%;
+    display:inline-block
+}
+#producto form input[type="text"],#producto form input[type="number"],#producto form textarea,#producto form label,#novedad form input[type="text"],#novedad form input[type="number"],#novedad form textarea,#novedad form label, #novedad form select{    display: inline-block;
+    width: 100%;
+}
+#producto form label, #novedad form label{
+    margin-top: 8px;
+}
+#novedad form div.contenido, #novedad form div.titulo{
+    width: 95%;
+}
+#novedad form div.portada{
+    width: 238px;
+}
+#novedad form div.portada img{
+    height: 238px;
+    max-width: 100%;
+}
+#novedad form div.encabezado{
+    width: calc(90% - 238px);
+}
+#novedad form div.encabezado img{
+    height: 238px;
+    max-width: 100%;
+}
+#novedad form div.contenido textarea{
+    height: 300px;
+    resize: none;
+    overflow-y: scroll;
+}
+.mensaje{
+    border-top: #ccc solid 1px;
+    border-bottom: #ccc solid 1px;
+    margin-bottom: 15px;
+}
+.mensaje.exito{
+    background-color: #cfc;
+}
+.mensaje.error{
+    background-color: #fcc;
+}
+.mensaje *{
+    padding: 0 1%;
+    display: inline-block;
+}
+
+@keyframes ocultarMostrar {
+  0%   { opacity:1; }
+  10%  { opacity:0; }
+  50%  { opacity:0; }
+  60%  { opacity:1; }
+  100% { opacity:1; }
+}
+@-o-keyframes ocultarMostrar{
+  0%   { opacity:1; }
+  10%  { opacity:0; }
+  50%  { opacity:0; }
+  60%  { opacity:1; }
+  100% { opacity:1; }
+}
+@-moz-keyframes ocultarMostrar{
+  0%   { opacity:1; }
+  10%  { opacity:0; }
+  50%  { opacity:0; }
+  60%  { opacity:1; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes ocultarMostrar{
+  0%   { opacity:1; }
+  10%  { opacity:0; }
+  50%  { opacity:0; }
+  60%  { opacity:1; }
+  100% { opacity:1; }
+}
+
+.cargando{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width:100vw;
+    min-height: 100vh;
+    background-color: rgba(255,255,255,0.77);
+    background-image: url('/res/img/admin/cargando.gif');
+    background-position: center center;
+    background-repeat: no-repeat;
+}

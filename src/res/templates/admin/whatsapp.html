@@ -1,0 +1,13 @@
+<section id="novedades">
+    <h1>Whatsapp</h1>
+    <nav>
+        <span ng-click="whatsapp.nuevo()">Agregar whatsapp</span>
+    </nav>
+    <table>
+        <tr ng-repeat="w in whatsapp.lista">
+            <td>{{ w.numero }}</td>
+            <td><button type="button" ng-click="whatsapp.eliminar(w.id)">Eliminar</button></td>
+        </tr>
+    </table>
+    <div class="cargando" ng-show="novedades.cargando"></div>
+</section>

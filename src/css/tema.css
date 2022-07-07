@@ -1,0 +1,30 @@
+#especiales a h4{
+    background-image: url('../img/tema/h4.png');
+    background-repeat: repeat-x;
+}
+#tema{
+    display:block;
+    width:100%;
+    position: relative;
+    z-index:-9999;
+    top:0;
+    left:0;
+}
+#esquina_izq{
+    position:absolute;
+    left:0;
+}
+#esquina_der{
+    position:absolute;
+    right:0;
+}
+body{
+    background-image: url('../img/tema/bg.png');
+}
+#centro{
+    display:block;
+    position:absolute;
+    top:240px;
+    left:calc(50% + 442px);
+    z-index:98;
+}

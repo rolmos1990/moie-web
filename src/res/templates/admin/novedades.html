@@ -1,0 +1,21 @@
+<section id="novedades">
+    <h1>Novedades</h1>
+    <nav>
+        <span ng-click="app.ir('novedades/nuevo')">Agregar novedad</span>
+    </nav>
+    <div>
+        <div class="novedad" ng-repeat="n in novedades.lista">
+            <div class="imagen"><img ng-src="catalogo/novedades/{{n.id}}.jpg"></div>
+            <h4>{{ n.titulo }}</h4>
+            <div class="opciones">
+                <span ng-click="app.ir('novedades/' + n.id)">
+                    <img src="res/img/admin/editar.png" />
+                </span>
+                <span ng-click="novedades.eliminar(n)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="cargando" ng-show="novedades.cargando"></div>
+</section>

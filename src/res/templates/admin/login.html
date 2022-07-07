@@ -1,0 +1,9 @@
+<section id="login">
+    <h1>Iniciar sesión</h1>
+    <form name="formLogin" novalidate>
+        <input type="password" ng-model="login.password" required placeholder="Contraseña">
+        <button ng-click="login.iniciar()" ng-disabled="formLogin.$invalid">Iniciar Sesión</button>
+    </form>
+    <b>{{ login.mensaje }}</b>
+    <div class="cargando" ng-show="login.cargando"></div>
+</section>

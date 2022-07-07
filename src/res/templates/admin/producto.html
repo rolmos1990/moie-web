@@ -1,0 +1,96 @@
+<section id="producto">
+    <h1>Producto <span ng-show="producto.data.nuevo">nuevo</span><span ng-hide="producto.data.nuevo">{{ producto.data.codigo }}</span></h1>
+    <nav>
+        <span ng-click="producto.guardar()">Guardar</span>
+        <span ng-click="app.ir('categoria/' + producto.data.idCategoria)">Volver</span>
+    </nav>
+    <ul id="imagenes">
+        <li>
+            <img class="foto" ng-show="producto.data.imagenes.viejas[0] && producto.data.imagenes.nuevas[0] === null" ng-src="catalogo/{{producto.data.idCategoria}}/{{producto.data.codigo}}_1_238.jpg?{{producto.data.fecha}}">
+            <img class="foto" ng-show="producto.data.imagenes.nuevas[0] !== null" ngf-thumbnail="producto.data.imagenes.nuevas[0]">
+            <div class="opciones" ng-show="producto.data.imagenes.viejas[0] || producto.data.imagenes.nuevas[0] !== null">
+                <span ng-click="producto.seleccionar(1)">
+                    <img src="res/img/admin/jpg.svg" />
+                </span>
+                <span ng-click="producto.eliminarImagen(0)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+            <span ng-click="producto.seleccionar(1)" class="seleccionar" ng-hide="producto.data.imagenes.viejas[0] || producto.data.imagenes.nuevas[0] !== null">
+                <img src="res/img/admin/jpg.svg">
+            </span>
+        </li><!--
+        --><li>
+            <img class="foto" ng-show="producto.data.imagenes.viejas[1] && producto.data.imagenes.nuevas[1] === null" ng-src="catalogo/{{producto.data.idCategoria}}/{{producto.data.codigo}}_2_238.jpg?{{producto.data.fecha}}">
+            <img class="foto" ng-show="producto.data.imagenes.nuevas[1] !== null" ngf-thumbnail="producto.data.imagenes.nuevas[1]">
+            <div class="opciones" ng-show="producto.data.imagenes.viejas[1] || producto.data.imagenes.nuevas[1] !== null">
+                <span ng-click="producto.seleccionar(2)">
+                    <img src="res/img/admin/jpg.svg" />
+                </span>
+                <span ng-click="producto.eliminarImagen(1)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+            <span ng-click="producto.seleccionar(2)" class="seleccionar" ng-hide="producto.data.imagenes.viejas[1] || producto.data.imagenes.nuevas[1] !== null">
+                <img src="res/img/admin/jpg.svg">
+            </span>
+        </li><!--
+        --><li>
+            <img class="foto" ng-show="producto.data.imagenes.viejas[2] && producto.data.imagenes.nuevas[2] === null" ng-src="catalogo/{{producto.data.idCategoria}}/{{producto.data.codigo}}_3_238.jpg?{{producto.data.fecha}}">
+            <img class="foto" ng-show="producto.data.imagenes.nuevas[2] !== null" ngf-thumbnail="producto.data.imagenes.nuevas[2]">
+            <div class="opciones" ng-show="producto.data.imagenes.viejas[2] || producto.data.imagenes.nuevas[2] !== null">
+                <span ng-click="producto.seleccionar(3)">
+                    <img src="res/img/admin/jpg.svg" />
+                </span>
+                <span ng-click="producto.eliminarImagen(2)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+            <span ng-click="producto.seleccionar(3)" class="seleccionar" ng-hide="producto.data.imagenes.viejas[2] || producto.data.imagenes.nuevas[2] !== null">
+                <img src="res/img/admin/jpg.svg">
+            </span>
+        </li>
+    </ul>
+    <form novalidate>
+        <div ng-show="producto.data.nuevo">
+            <label>Codigo</label>
+            <input type="text" name="codigo" ng-model="producto.data.codigo">
+        </div><!--
+        --><div>
+            <label>Tipo</label>
+            <input type="text" name="tipo" ng-model="producto.data.tipo">
+        </div><!--
+        --><div>
+            <label>Tela / Material</label>
+            <input type="text" name="tela" ng-model="producto.data.tela">
+        </div><!--
+        --><div>
+            <label>Talla Unica</label>
+            <input type="radio" name="talla-unica" ng-model="producto.data.tallaUnica" value="1">Si
+            <input type="radio" name="talla-unica" ng-model="producto.data.tallaUnica" value="0">No
+        </div><!--
+        --><div>
+            <label>
+                <span ng-hide="producto.data.tallaUnica">Tallas</span>
+                <span ng-show="producto.data.tallaUnica">Sirve para</span>
+            </label>
+            <input type="text" name="sirve-para" ng-model="producto.data.tallas">
+        </div><!--
+        --><div>
+            <label>Observaciones</label>
+            <input type="text" name="observaciones" ng-model="producto.data.observaciones"/>
+        </div><!--
+        --><div>
+            <label>Precio</label>
+            <input type="number" step="0.01" min="0" name="precio" ng-model="producto.data.precio">
+        </div><!--
+        --><div>
+            <label>Descuento Especial</label>
+            <input type="number" step="1" min="0" max="100" name="descuentoEspecial" ng-model="producto.data.descuentoEspecial">
+        </div>
+        <input type="file" id="imagen-producto1" ngf-select ng-model="producto.data.imagenes.nuevas[0]" ngf-accept="'image/jpeg'">
+        <input type="file" id="imagen-producto2" ngf-select ng-model="producto.data.imagenes.nuevas[1]" ngf-accept="'image/jpeg'">
+        <input type="file" id="imagen-producto3" ngf-select ng-model="producto.data.imagenes.nuevas[2]" ngf-accept="'image/jpeg'">
+    </form>
+    <div class="cargando" ng-show="producto.cargando"></div>
+</section>

@@ -1,0 +1,105 @@
+#titulo_representantes{
+    width: 1000px;
+    margin: auto;
+}
+.representantes{
+    width: 1000px;
+    margin: auto;
+    font-size: 1.3em;
+    margin-bottom: 20px;
+}
+.representantes table{
+    width:100%;
+}
+.representantes table td{
+    text-align: justify;
+    vertical-align: top;
+}
+.representantes ul {
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.representantes li { 
+    padding-left: 1em; 
+}
+.representantes li p:first-child:before {
+    content: "• ";
+    font-size: 1.4em;
+    color: rgb(254, 29, 197); /* or whatever color you prefer */
+}
+.representantes h1{
+    text-align: left;
+    color: #525252;
+    vertical-align: middle;
+}
+.representantes h1:before {
+    content: "• ";
+    font-size: 1.4em;
+    color: rgb(254, 29, 197); /* or whatever color you prefer */
+}
+.representantes form{
+    width:65%;
+    margin: auto;
+    text-align: right;
+}
+.representantes form table{
+    width:100%;
+}
+.representantes form table tr{
+    line-height: 1.8em;
+}
+.representantes form table tr td{
+    vertical-align: top;
+}
+.representantes form table tr td:first-child{
+    width: 35%;
+    text-transform: uppercase;
+}
+.representantes form table tr td:last-child textarea, .representantes form table tr td:last-child input[type="text"]{
+    width: 100%;
+}
+.representantes form table td{
+    text-align: left;
+    vertical-align: middle;
+}
+.representantes form input[type="submit"]{
+    border: none;
+    background-image: linear-gradient(to top, #AD2C5D, #CC4D72);
+    cursor: pointer;
+    color: #FFFFFF;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding:10px;
+    text-transform: uppercase;
+}
+.representantes textarea{
+    height: 100px;
+    resize: none;
+    padding: 1px 0;
+}
+.representantes em, .representantes span{
+    display:inline-block;
+    margin-top: 20px;
+    vertical-align: middle;
+}
+.representantes em{
+    width:10%;
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #525252;
+}
+.representantes li:nth-child(2n) em{
+    color: #CC4D72;
+}
+.representantes span{
+    width:90%;
+}
+.representantes table#catalogo{
+    border-top: 5px solid #CC4D72;
+    border-bottom: 5px solid #CC4D72;
+}
+.representantes h3{
+    color: #CC4D72;
+}

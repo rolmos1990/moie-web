@@ -1,0 +1,42 @@
+<section id="productos">
+    <h1>{{ categoria.data.nombre }}</h1>
+    <nav>
+        <span ng-click="app.ir('categoria/' + categoria.data.id + '/nuevo')">Nuevo producto</span>
+        <span ng-click="categoria.vaciar()">Vaciar categoría</span>
+        <span ng-click="categoria.descuentos()">Establecer descuentos</span>
+<!--        <span ng-click="categoria.mostrarAgotados = !categoria.mostrarAgotados">
+            <span ng-hide="categoria.mostrarAgotados">Mostrar Agotados</span>
+            <span ng-show="categoria.mostrarAgotados">Ocultar Agotados</span>
+        </span>-->
+        <span ng-click="categoria.pdf(true)">Generar PDF</span>
+        <span ng-click="categoria.pdf(false)">Generar PDF (Ref.)</span>
+        
+        <span ng-click="categoria.pdfWeb(true)">Generar PDF (Web)</span>
+        <span ng-click="categoria.pdfWeb(false)">Generar PDF (Ref.)</span>
+        
+        <span ng-click="app.ir('categorias')">Volver</span>
+    </nav>
+    <div ui-sortable="categoria.ordenar" ng-model="categoria.data.productos">
+        <div class="producto" 
+             ng-repeat="p in categoria.data.productos" 
+             ng-class="{'agotado': p.existencia*1 === 0 }" 
+             ng-show="categoria.mostrarAgotados || p.existencia*1" >
+            <div class="imagen">
+                <img ng-src="catalogo/{{ categoria.data.id }}/{{ p.codigo }}_{{ categoria.minImagen(p.imagenes*1) }}_238.jpg?{{ p.fecha }}" alt="{{ p.codigo }}" />
+            </div>
+            <div class="datos">
+                <span class="codigo">{{ p.codigo }}</span><!--
+                --><span class="precio">{{ p.precio | currency:"Bs. " }}</span>
+            </div>
+            <div class="opciones">
+                <span ng-click="app.ir('categoria/' + categoria.data.id + '/' + p.codigo)">
+                    <img src="res/img/admin/editar.png" />
+                </span>
+                <span ng-click="categoria.eliminar(p)">
+                    <img src="res/img/admin/eliminar.png" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="cargando" ng-show="categoria.cargando"></div>
+</section>

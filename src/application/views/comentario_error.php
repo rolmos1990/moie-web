@@ -1,0 +1,1 @@
+<div class="resultado_comentario">Tu comentario no se ha podido enviar. Por favor intenta nuevamente.</div>

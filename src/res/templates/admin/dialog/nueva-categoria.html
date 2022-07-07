@@ -1,0 +1,8 @@
+<div class="ngdialog-message">
+    <p>Introduzca el nombre de la nueva categoría</p>
+    <input ng-model="nombre" />
+</div>
+<div class="ngdialog-buttons">
+    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(nombre)">Si</button>
+    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('no')">No</button>
+</div>

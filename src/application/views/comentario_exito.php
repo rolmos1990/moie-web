@@ -1,0 +1,1 @@
+<div class="resultado_comentario">Tu comentario se ha enviado. Gracias.</div>
