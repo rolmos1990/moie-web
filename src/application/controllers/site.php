@@ -101,14 +101,24 @@ class Site extends CI_Controller {
         $data['ver']=$producto;
         $this->load->model('m_site');
         $this->top();
+
+        $this->load->helper('callService');
+        $this->load->helper('migrationConverter');
+
+        $callService = new callservicehelper();
+
         if(strtoupper($categoria)=='MAYOR'){
             $data['productos'] = $this->m_site->get_productos_mayor();
             $this->load->view('productos_mayor',$data);
             $this->load->view('compras_al_mayor');
         }else{
             $data['categoria'] = $this->m_site->get_categoria($categoria);
-            $data['productos'] = $this->m_site->get_productos($categoria,false);
-            var_dump(json_encode($data['productos'][0], true));die();
+
+
+            $products = $callService->getProducts(100,0);
+            $productsData = migrationconverterhelper::products($products["data"]);
+
+            $data['productos'] = $productsData;
             $this->load->view('productos',$data);
             if($categoria == 9){
                 $this->load->view('panales');
@@ -118,8 +128,17 @@ class Site extends CI_Controller {
     }
     public function producto($producto){
         $this->load->model('m_site');
-        $data['producto']=$this->m_site->get_producto($producto);
-        $data['disponibilidad'] = $this->group_by('talla',$this->m_site->disponibilidad($producto));
+
+        $this->load->helper('callService');
+        $this->load->helper('migrationConverter');
+
+        $callService = new callservicehelper();
+
+        $productData = $callService->getProduct($producto);
+
+        $data["producto"] = migrationconverterhelper::product($productData);
+
+        $data["disponibilidad"] = migrationconverterhelper::sizes($productData);
         $this->load->view('producto',$data);
     }
     public function producto_mayor($producto){

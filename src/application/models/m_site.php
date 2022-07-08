@@ -263,6 +263,10 @@ class M_site extends CI_Model{
         return $this->db->affected_rows();
     }
     //TODO -- cambio aqui para obtener productos mayor
+    function get_productos_mayor_service(){
+
+    }
+
     function get_productos_mayor(){
         $query = $this->db->query("select producto.*,"
                 . "categoria.*,"
