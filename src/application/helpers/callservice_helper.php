@@ -45,8 +45,14 @@ class callservicehelper {
         return $data;
     }
 
-    function getProducts($limit, $page){
-        $queryParams = array("limit" => $limit, "offset" => $page);
+    function getProducts($limit, $page, $conditional = null){
+
+        if(!$conditional) {
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => "published::1");
+        } else {
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => $conditional);
+        }
+
         $result = $this->callGet(self::URL_PRODUCT, $queryParams);
         $resultData = json_decode($result, true);
         return $resultData;
@@ -63,8 +69,26 @@ class callservicehelper {
         return $product[0];
     }
 
-    function getCategories(){
-        $queryParams = Array("limit" => 1, "offset" => 0);
-        return $this->callGet(self::URL_CATEGORY, $queryParams);
+    function getCategories($limit, $page, $conditional = null){
+        if(!$conditional) {
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => "status::1");
+        } else {
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => $conditional);
+        }
+        $result = $this->callGet(self::URL_CATEGORY, $queryParams);
+        $resultData = json_decode($result, true);
+        return $resultData;
     }
+
+    function getCategory($category){
+
+        $queryParams = array("limit" => 1, "conditional" => "id::" . $category);
+        $result = $this->callGet(self::URL_CATEGORY, $queryParams);
+        $resultData = json_decode($result, true);
+
+        $product = $resultData["data"];
+
+        return $product[0];
+    }
+
 }

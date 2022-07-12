@@ -134,7 +134,7 @@ class Admin extends CI_Controller {
             $nombre=$_FILES["imagen"]["name"];
             $this->load->model('m_admin');
             $this->m_admin->nueva_imagen_rotativo($nombre,$t);
-            $ruta = './catalogo/slider/' . $nombre;
+            $ruta = './src/catalogo/slider/' . $nombre;
             move_uploaded_file($image,$ruta);
         }else{
             http_response_code(401);
@@ -151,7 +151,7 @@ class Admin extends CI_Controller {
             $nombre = $this->input->post('nombre');
             $this->load->model('m_admin');
             $this->m_admin->eliminar_imagen_rotativo($nombre,$t);
-            $ruta = './catalogo/slider/' . $nombre;
+            $ruta = './src/catalogo/slider/' . $nombre;
             unlink($ruta);
         }else{
             http_response_code(401);

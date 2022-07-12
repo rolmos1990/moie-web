@@ -6,9 +6,9 @@
     app.config(function($routeProvider){
         $routeProvider.
             when('/login',{templateUrl:'/res/templates/admin/login.html',controller:'loginController',controllerAs:'login'}).
-            when('/categorias',{templateUrl:'/res/templates/admin/categorias.html',controller:'categoriasController',controllerAs:'categorias'}).
-            when('/categoria/:categoria',{templateUrl:'/res/templates/admin/categoria.html',controller:'categoriaController',controllerAs:'categoria'}).
-            when('/categoria/:categoria/:producto',{templateUrl:'/res/templates/admin/producto.html',controller:'productoController',controllerAs:'producto'}).
+            //when('/categorias',{templateUrl:'/res/templates/admin/categorias.html',controller:'categoriasController',controllerAs:'categorias'}).
+            //when('/categoria/:categoria',{templateUrl:'/res/templates/admin/categoria.html',controller:'categoriaController',controllerAs:'categoria'}).
+            //when('/categoria/:categoria/:producto',{templateUrl:'/res/templates/admin/producto.html',controller:'productoController',controllerAs:'producto'}).
             when('/rotativo-principal',{templateUrl:'/res/templates/admin/rotativo.html',controller:'rotativoController',controllerAs:'rotativo'}).
             when('/rotativo-secundario',{templateUrl:'/res/templates/admin/rotativo.html',controller:'rotativoController',controllerAs:'rotativo'}).
             when('/novedades',{templateUrl:'/res/templates/admin/novedades.html',controller:'novedadesController',controllerAs:'novedades'}).
@@ -16,7 +16,7 @@
             when('/comentarios',{templateUrl:'/res/templates/admin/comentarios.html',controller:'comentariosController',controllerAs:'comentarios'}).
             when('/movil',{templateUrl:'/res/templates/admin/movil.html',controller:'movilController',controllerAs:'movil'}).
             when('/whatsapp',{templateUrl:'/res/templates/admin/whatsapp.html',controller:'whatsappController',controllerAs:'whatsapp'}).
-            otherwise({redirectTo:'/categorias'});
+            otherwise({redirectTo:'/rotativo-principal'});
     });
     
     /*offset del auto scroll*/
@@ -34,7 +34,7 @@
             login.cargando = true;
             $http.post('/admin/login',helpers.httpParam({password: this.password}),{ headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'} }).success(function(data){
                 login.cargando = false;
-                $location.path('/categorias');
+                $location.path('/rotativo-principal');
             }).error(function(data,status){
                 login.cargando = false;
                 login.mensaje = 'Contraseña inválida';

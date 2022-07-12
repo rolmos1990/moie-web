@@ -33,7 +33,6 @@
             </div><!--
             --><div id="secciones" ng-hide="app.rutaActiva('login')">
                 <nav>
-                    <span ng-click="app.ir('categorias')" ng-class="{'activo': app.rutaActiva('categoria') || app.rutaActiva('producto') }">Productos</span>
                     <span ng-click="app.ir('rotativo-principal')" ng-class="{'activo': app.rutaActiva('rotativo-principal')}">Rotativo</span>
                     <!--<span ng-click="app.ir('rotativo-secundario')" ng-class="{'activo': app.rutaActiva('rotativo-secundario')}">Rotativo Secundario</span>-->
                     <span ng-click="app.ir('novedades')" ng-class="{'activo': app.rutaActiva('novedades')}">Novedades</span>

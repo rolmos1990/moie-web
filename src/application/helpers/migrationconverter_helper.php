@@ -93,6 +93,22 @@ class migrationconverterhelper {
 
     }
 
+    static function category($category){
+        $added = Array(
+            "id" => $category["id"],
+            "nombre" => $category["name"],
+            "descuento" => $category["discountPercent"],
+            "orden" => 0,
+            "actualizacion" => $category["updatedAt"],
+            "filename" => $category["filename"],
+            "filenameBanner" => $category["filenameBanner"]
+        );
+
+        $added = (object) $added;
+
+        return  $added;
+    }
+
 
     //convertir producto (v2 a v1)
     static function products($products){
@@ -105,6 +121,23 @@ class migrationconverterhelper {
 
         foreach($products as $product){
             $productAdded = self::product($product);
+            $list[] = $productAdded;
+        }
+
+        return $list;
+
+    }
+
+    //convertir producto (v2 a v1)
+    static function categories($categories){
+
+        $list = [];
+
+        if(count($categories) <= 0){
+            return $list;
+        }
+        foreach($categories as $category){
+            $productAdded = self::category($category);
             $list[] = $productAdded;
         }
 

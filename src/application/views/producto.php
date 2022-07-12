@@ -22,12 +22,12 @@
         }
         for($i=0;$i<count($img);$i++){
             if($img[$i]){ $j = $i+1; ?>
-        <img id="miniatura_<?=$j;?>" data-img="<?=$j;?>" src="<?=base_catalog_url() . 'catalogo/' . $producto->id_categoria . '/' . $producto->codigo . '_' . $j . '_67.jpg';?>" alt="<?=$producto->codigo;?>" height="100">
+        <img id="miniatura_<?=$j;?>" data-img="<?=$j;?>" src="<?=base_catalog_url() . $producto->id_categoria . '/' . $producto->codigo . '_' . $j . '_67.jpg';?>" alt="<?=$producto->codigo;?>" height="100">
         <?php } } ?>
     </div>
     <div id="imagen">
         <?php for($i=1;$i<=$producto->imagenes;$i++){?>
-        <img id="imagen_<?=$i;?>" src="<?=base_catalog_url() . 'catalogo/' . $producto->id_categoria . '/' . $producto->codigo . '_' . $i . '_400.jpg';?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_catalog_url() . 'catalogo/' . $producto->id_categoria . '/' . $producto->codigo . '_' . $i . '_800.jpg';?>" alt="<?=$producto->codigo;?>">
+        <img id="imagen_<?=$i;?>" src="<?=base_catalog_url() . $producto->id_categoria . '/' . $producto->codigo . '_' . $i . '_400.jpg';?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_catalog_url() . $producto->id_categoria . '/' . $producto->codigo . '_' . $i . '_800.jpg';?>" alt="<?=$producto->codigo;?>">
         <?php } ?>
     </div>
     <?php if($producto->descuento > 0){ ?><div id="lazo_descuento"><?=$producto->descuento;?>% Descuento</div><?php } ?>

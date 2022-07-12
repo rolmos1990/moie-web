@@ -9,7 +9,7 @@
     <?php if($items > 0){ ?>
     <div class="multimedia">
         <div class="item">
-            <img src="<?=base_url();?>catalogo/novedades/<?=$novedad['id'] . '-1';?>.jpg">
+            <img src="<?=base_catalog_url();?>novedades/<?=$novedad['id'] . '-1';?>.jpg">
         </div>
         <?php if($novedad['video'] !== ''){ ?>
         <div class="item">
@@ -72,7 +72,7 @@
         <ul>
             <?php foreach($novedad['relacionadas'] as $r){ ?>
             <li onclick="location.href='<?=base_url()?>site/novedades/<?=$r['id'];?>'">
-                <div class="imagen"><img src="/catalogo/novedades/<?=$r['id'];?>.jpg"></div>
+                <div class="imagen"><img src="<?=base_catalog_url()?>/novedades/<?=$r['id'];?>.jpg"></div>
                 <div class="titulo"><?=$r['titulo'];?>.jpg</div>
             </li>
             <?php } ?>

@@ -32,7 +32,13 @@ class Site extends CI_Controller {
     }
     public function top($data=[]){
         $this->load->model('m_site');
-        $data['categorias'] = $this->m_site->get_categorias();
+        //$data['categorias'] = $this->m_site->get_categorias();
+
+        $this->load->helper('callService');
+        $this->load->helper('migrationConverter');
+        $callService = new callservicehelper();
+        $categoriesData = $callService->getCategories(100,0);
+        $data['categorias'] = migrationconverterhelper::categories($categoriesData["data"]);
         $data['banner']=$this->m_site->get_banner();
         $data['config']=$this->m_site->get_configuraciones();
         $this->load->view('top',$data);
@@ -112,10 +118,11 @@ class Site extends CI_Controller {
             $this->load->view('productos_mayor',$data);
             $this->load->view('compras_al_mayor');
         }else{
-            $data['categoria'] = $this->m_site->get_categoria($categoria);
+            //$data['categoria'] = $this->m_site->get_categoria($categoria);
+            $categoriaData = $callService->getCategory($categoria);
+            $data["categoria"] = migrationconverterhelper::category($categoriaData);
 
-
-            $products = $callService->getProducts(100,0);
+            $products = $callService->getProducts(100,0, "category::" . $categoria ."|published::1");
             $productsData = migrationconverterhelper::products($products["data"]);
 
             $data['productos'] = $productsData;

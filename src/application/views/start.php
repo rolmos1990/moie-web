@@ -46,9 +46,9 @@
         <div id="subtitulo"><span>NUESTROS PRODUCTOS</span></div>
         <div id="especiales">
             <?php foreach($categorias as $c){ ?>
-                <a href="<?=base_url() . 'site/productos/' . $c->id;?>"><img src="<?=base_url() . 'catalogo/' .$c->id;?>/config/portada.png?<?=mdate('%Y%m%d%H');?>" width="326" alt="<?=$c->nombre;?>"><h4><?=$c->nombre;?></h4></a>
+                <a href="<?=base_url() . 'site/productos/' . $c->id;?>"><img src="<?=base_catalog_url() . 'categories/' .$c->filename;?>?<?=mdate('%Y%m%d%H');?>" width="326" height="160" alt="<?=$c->nombre;?>"><h4><?=$c->nombre;?></h4></a>
             <?php } ?>
-                <a href="<?=base_url() . 'site/productos/mayor';?>"><img src="<?=base_url() . 'catalogo/mayor';?>/config/portada.png?<?=mdate('%Y%m%d%H');?>" width="326" alt="COMPRAS AL MAYOR"><h4>COMPRAS AL MAYOR</h4></a>
+                <!-- <a href="<?=base_url() . 'site/productos/mayor';?>"><img src="<?=base_url() . 'catalogo/mayor';?>/config/portada.png?<?=mdate('%Y%m%d%H');?>" width="326" height="160" alt="COMPRAS AL MAYOR"><h4>COMPRAS AL MAYOR</h4></a> -->
         </div>
 
 

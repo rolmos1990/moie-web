@@ -1,4 +1,4 @@
-        <div id="titulo_categoria" style="background:url('<?=base_url() . 'catalogo/novedades/config/encabezado.jpg?' . mdate('%Y%m%d%H');?>') no-repeat">
+        <div id="titulo_categoria" style="background:url('<?=base_catalog_url() . '/novedades/config/encabezado.jpg?' . mdate('%Y%m%d%H');?>') no-repeat">
             <div class="video">
                 <video width="300" height="210" autoplay loop>
                     <source src="<?=base_url();?>vid/lucy.mp4" type="video/mp4">
@@ -12,7 +12,7 @@
         <div id="novedades">
             <?php foreach($novedades as $n){ ?>
             <div class="novedad" onclick="location.href='<?=base_url();?>site/novedades/<?=$n['id'];?>'">
-                <div class="imagen"><img src="<?=base_url() . 'catalogo/novedades/' . $n['id'] . '.jpg?' . mdate('%Y%m%d%H');?>"></div>
+                <div class="imagen"><img src="<?=base_catalog_url() . '/novedades/' . $n['id'] . '.jpg?' . mdate('%Y%m%d%H');?>"></div>
                     
                 <div class="titulo"><?=$n['titulo'];?></div>
                 <div class="vista_previa">

@@ -1,4 +1,4 @@
-        <div id="titulo_categoria" style="background:url('<?=base_url() . 'catalogo/' . $categoria->id . '/config/encabezado.jpg?' . mdate('%Y%m%d%H');?>') no-repeat">
+        <div id="titulo_categoria" style="background:url('<?=base_catalog_url() . 'categories/' . $categoria->filenameBanner . '?' . mdate('%Y%m%d%H');?>') no-repeat">
             <div class="video">
                 <video width="300" height="210" autoplay loop>
                     <source src="<?=base_url();?>vid/lucy.mp4" type="video/mp4">
@@ -26,11 +26,11 @@
                 <div class="ver_mas"><span>VER TALLAS</span></div>
                 <div class="producto_imagen">
                     <?php if($p->imagenes > 0){ ?>
-                    <img src="<?=base_url() . 'catalogo/' . $categoria->id . '/' . $p->codigo;?>_1_238.jpg" width="238" height="357">
+                    <img src="<?=base_catalog_url() . $categoria->id . '/' . $p->codigo;?>_1_238.jpg" width="238" height="357">
                     <?php
                     }
                     if($p->imagenes == 3 || $p->imagenes == 7){ ?>
-                    <img src="<?=base_url() . 'catalogo/' . $categoria->id . '/' . $p->codigo;?>_2_238.jpg" width="238" height="357">
+                    <img src="<?=base_catalog_url() . $categoria->id . '/' . $p->codigo;?>_2_238.jpg" width="238" height="357">
                     <?php } ?>
                 </div>
                 <div class="producto_datos">
