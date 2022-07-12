@@ -14,6 +14,26 @@ class Site extends CI_Controller {
         }   
         parent::__construct();
     }
+
+    public function test(){
+
+        try {
+            $this->load->model('m_site');
+
+            echo "configuraciones ...";
+            $config=$this->m_site->get_configuraciones();
+            var_dump($config);
+
+            echo "novedades ...";
+            $novedades = $this->m_site->novedades();
+            var_dump($novedades);
+            die();
+
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function index(){
         date_default_timezone_set('America/Caracas');
         $this->load->model('m_site');
