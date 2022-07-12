@@ -2,13 +2,12 @@ version: "3"
 
 
 services:
-  api:
+  siteweb:
     image: 'rolmos/lucy-web:${APP_VERSION}'
-    command: 'npm run start'
     volumes:
       - /var/catalogo:/src/catalogo/
     ports:
-      - "8083:8081"
+      - "8082:80"
     environment:
       DB_HOST: ${DB_HOST}
       DB_PORT: ${DB_PORT}
