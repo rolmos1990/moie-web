@@ -64,5 +64,5 @@ jobs:
           HTTP_HOST: ${{ secrets.HTTP_HOST }}
         run: |
           ssh apikey "cd /var/apps/web && docker-compose stop"
-          ssh apikey "cd /var/apps/web && APP_VERSION=0.1-$SHA PORT=$PORT HOST=$HOST DB_HOST=$DB_HOST DB_PORT=$DB_PORT DB_USERNAME=$DB_USERNAME DB_PASSWORD=$DB_PASSWORD DB_DATABASE=$DB_DATABASE docker-compose pull"
-          ssh apikey "cd /var/apps/web && APP_VERSION=0.1-$SHA PORT=$PORT HOST=$HOST DB_HOST=$DB_HOST DB_PORT=$DB_PORT DB_USERNAME=$DB_USERNAME DB_PASSWORD=$DB_PASSWORD DB_DATABASE=$DB_DATABASE docker-compose up -d"
+          ssh apikey "cd /var/apps/web && APP_VERSION=0.1-$SHA PORT=$PORT HOST=$HOST DB_HOST=$DB_HOST DB_PORT=$DB_PORT DB_USERNAME=$DB_USERNAME DB_PASSWORD=$DB_PASSWORD DB_DATABASE=$DB_DATABASE HTTP_HOST=$HTTP_HOST docker-compose pull"
+          ssh apikey "cd /var/apps/web && APP_VERSION=0.1-$SHA PORT=$PORT HOST=$HOST DB_HOST=$DB_HOST DB_PORT=$DB_PORT DB_USERNAME=$DB_USERNAME DB_PASSWORD=$DB_PASSWORD DB_DATABASE=$DB_DATABASE HTTP_HOST=$HTTP_HOST docker-compose up -d"
