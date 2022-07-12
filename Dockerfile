@@ -37,6 +37,6 @@ COPY ./src/ /var/www/html/
 
 #ENV APACHE_DOCUMENT_ROOT=/var/www/html/src
 
-EXPOSE 80
+EXPOSE 8882
 
 
