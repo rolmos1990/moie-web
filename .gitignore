@@ -1,3 +1,4 @@
 catalogo/*
 src/catalogo/*
 !.gitignore
+src/vid/*
