@@ -1,11 +1,30 @@
 version: "3"
 
+
 services:
-  lucyweb:
-    container_name: lucyweb
-    build:
-      context: ./
+  api:
+    image: 'rolmos/lucy-web:${APP_VERSION}'
+    command: 'npm run start'
     volumes:
-      - ./src/:/var/www/html:cached
+      - /var/catalogo:/src/catalogo/
     ports:
-      - 8080:80
+      - "8083:8081"
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_PORT: ${DB_PORT}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
+      TZ: America/Bogota
+
+#for localconfiguration
+#services:
+#  lucyweb:
+#    container_name: lucyweb
+#    build:
+#      context: ./
+#    volumes:
+#      -  /var/storage:/storage/
+#      - ./src/:/var/www/html:cached
+#    ports:
+#      - 8080:80

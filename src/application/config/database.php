@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'lucymodas.com';
-$db['default']['username'] = 'lucyweb';
-$db['default']['password'] = 'michi1234';
-$db['default']['database'] = 'lucy_web_test';
+$db['default']['hostname'] = $_SERVER["DB_HOST"] || 'lucymodas.com';
+$db['default']['username'] = $_SERVER["DB_USERNAME"] || 'lucyweb';
+$db['default']['password'] = $_SERVER["DB_PASSWORD"] || 'michi1234';
+$db['default']['database'] = $_SERVER["DB_DATABASE"] || 'lucy_web_test';
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
