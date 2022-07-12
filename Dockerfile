@@ -30,7 +30,7 @@ COPY src/my-apache2.conf /etc/apache2/sites-enabled/httpd.conf
 COPY src/php.ini $PHP_INI_DIR/conf.d/
 
 # Copy app files
-COPY ./src/* /var/www/html/
+COPY ./src/ /var/www/html/
 
 # Install composer dependancies
 #RUN cd /var/www/html/api/ && composer install
