@@ -166,7 +166,7 @@
                     --><li onclick="location.href='/site/productos/mayor'">COMPRAS AL MAYOR</li><!--
                     <li onclick="location.href='/representantes/'">REPRESENTANTES</li>
                     <li onclick="location.href='/site/novedades'">NOVEDADES</li>-->
-                    <li class="link_pago" onclick="location.href='/site/pago'">REPORTAR PAGO</li>
+                    <!-- <li class="link_pago" onclick="location.href='/site/pago'">REPORTAR PAGO</li> -->
                 </ul>
             </menu>
             <?php } ?>
