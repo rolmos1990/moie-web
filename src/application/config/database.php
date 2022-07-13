@@ -48,10 +48,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = getenv("DB_HOST") || 'lucymodas.com';
-$db['default']['username'] = getenv("DB_USERNAME") || 'lucyweb';
-$db['default']['password'] = getenv("DB_PASSWORD") || 'michi1234';
-$db['default']['database'] = getenv("DB_DATABASE") || 'lucy_web_test';
+$db['default']['hostname'] = getenv("DB_HOST");
+$db['default']['username'] = getenv("DB_USERNAME");
+$db['default']['password'] = getenv("DB_PASSWORD");
+$db['default']['database'] = getenv("DB_DATABASE");
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
