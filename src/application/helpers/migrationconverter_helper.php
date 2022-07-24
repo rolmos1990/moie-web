@@ -75,12 +75,10 @@ class migrationconverterhelper {
 
         $priceDiscount = $product["price"];
         $discountPercent = 0;
-        $specialDiscount = 0;
 
         if($product["discount"] > 0) {
             $priceDiscount = $product["price"] - (($product["price"] * $product["discount"]) / 100);
             $discountPercent = $product["discount"];
-            $specialDiscount = $discountPercent;
         } else if($product["category"]["discountPercent"] > 0) {
             $priceDiscount = $product["price"] - (($product["price"] * $product["category"]["discountPercent"]) / 100);
             $discountPercent = $product["category"]["discountPercent"];
@@ -101,7 +99,6 @@ class migrationconverterhelper {
             "observaciones" => "",
             "fecha" => $product["createdAt"],
             "descuento" => $discountPercent,
-            "descuento_especial" => $specialDiscount,
             "precio_descuento" => ceil($priceDiscount),
             "productSizes" => $productSizes,
             "productImages" => $imagesObj

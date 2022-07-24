@@ -15,10 +15,6 @@
                 <?php if($categoria->id !== '19'){ ?>
                 <?php
                 $d = intval($categoria->descuento);
-                $e = intval($p->descuento_especial);
-                if($e > 0){
-                    $d = $e;
-                }
                 if($d == 25 || $d == 35){ ?>
                 <!--<div class="promo"><img src="/img/promo<?=$d;?>.png"></div>-->
                 <?php } ?>
