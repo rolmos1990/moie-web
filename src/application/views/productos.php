@@ -26,11 +26,11 @@
                 <div class="ver_mas"><span>VER TALLAS</span></div>
                 <div class="producto_imagen">
                     <?php if($p->imagenes > 0){ ?>
-                    <img src="<?=base_catalog_url() . $categoria->id . '/' . $p->codigo;?>_1_238.jpg" width="238" height="357">
+                    <img src="<?=base_catalog_url() . $p->productImages[0]['medium'];?>" width="238" height="357">
                     <?php
                     }
                     if($p->imagenes == 3 || $p->imagenes == 7){ ?>
-                    <img src="<?=base_catalog_url() . $categoria->id . '/' . $p->codigo;?>_2_238.jpg" width="238" height="357">
+                    <img src="<?=base_catalog_url() . $p->productImages[1]['medium'];?>" width="238" height="357">
                     <?php } ?>
                 </div>
                 <div class="producto_datos">
