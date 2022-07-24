@@ -7,7 +7,7 @@
     </div>
     <div id="imagen">
         <?php foreach($producto->productImages as $productImage){ ?>
-        <img id="imagen_<?=$productImage['index'];?>" src="<?=$productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
+        <img id="imagen_<?=$productImage['index'];?>" src="<?=base_product_catalog_url() . $productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
         <?php } ?>
     </div>
     <?php if($producto->descuento > 0){ ?><div id="lazo_descuento"><?=$producto->descuento;?>% Descuento</div><?php } ?>
