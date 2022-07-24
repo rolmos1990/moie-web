@@ -46,7 +46,7 @@ class migrationconverterhelper {
                     } else {
                         $sizes .= $ps["name"];
 
-                        if ($key !== key($key)) {
+                        if ($key !== key($product["productSize"])) {
                             $sizes.= '-';
                         }
                     }
