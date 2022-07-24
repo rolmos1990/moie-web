@@ -14,7 +14,7 @@
             --><div class="producto" href="<?=base_url();?>site/producto/<?=$p->codigo;?>">
                 <?php if($categoria->id !== '19'){ ?>
                 <?php
-                $d = intval($categoria->descuento);
+                $d = intval($p->descuento);
                 if($d == 25 || $d == 35){ ?>
                 <!--<div class="promo"><img src="/img/promo<?=$d;?>.png"></div>-->
                 <?php } ?>
