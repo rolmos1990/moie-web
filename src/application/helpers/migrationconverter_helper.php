@@ -55,14 +55,12 @@ class migrationconverterhelper {
             $images = count($product["productImage"]);
         }
 
-        //order productImages in Images
+        //create order for products (with service)
         $imagesObj = [];
         if(count($product["productImage"]) > 0){
-            $productImageOrdered = usort($product['productImage'], function($a, $b) {return strcmp($a->group, $b->group);});
-            foreach ($productImageOrdered as $pi) {
-
+            usort($product['productImage'], function($a, $b) {return strcmp($a['group'], $b['group']);});
+            foreach ($product['productImage'] as $pi) {
                 $parsed = json_decode($pi['thumbs']);
-
                 $imagesObj[$pi['group']] = array('small' => $parsed['small'], 'medium' => $parsed['medium'], 'high' => $parsed['high'], 'original' => $pi['path']);
             }
         }
