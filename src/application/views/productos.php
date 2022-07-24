@@ -25,17 +25,20 @@
                 <?php } ?>
                 <div class="ver_mas"><span>VER TALLAS</span></div>
                 <div class="producto_imagen">
-                    <?php if($p->imagenes > 0){ ?>
+                    <?php if($p->imagenes > 0 && $p->productImages[0]){ ?>
                     <img src="<?=base_catalog_url() . $p->productImages[0]['medium'];?>" width="238" height="357">
                     <?php
-                    }
-                    if($p->imagenes == 3 || $p->imagenes == 7){ ?>
+                    } else if($p->imagenes == 3 || $p->imagenes == 7 && $p->productImages[1]){ ?>
                     <img src="<?=base_catalog_url() . $p->productImages[1]['medium'];?>" width="238" height="357">
+                    <?php } else { ?>
+                    <img src="#" width="238" height="357">
                     <?php } ?>
                 </div>
                 <div class="producto_datos">
                     <div class="producto_codigo"><?=$p->tipo;?>: <span><?=str_replace("_","",$p->codigo);?></span></div><div class="pesos">Pesos <img src="<?=base_url();?>img/bandera.png"></div>
-                    <div class="producto_precio"><span><?php if($d > 0){ echo '<cite>' . $p->precio . '</cite>' . '(-' . $d . '%)'; }?> </span><b><?=$p->precio_descuento;?></b></div>
+                    <div class="producto_precio"><span>
+                            <?php if($d > 0){ echo '<cite>' . $p->precio . '</cite>' . '(-' . $d . '%)'; }?>
+                        </span><b><?=$p->precio_descuento;?></b></div>
                 </div>
             </div><!--
             --><?php } ?>
