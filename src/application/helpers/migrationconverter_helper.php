@@ -61,7 +61,7 @@ class migrationconverterhelper {
             $productImageOrdered = usort($product['productImage'], function($a, $b) {return strcmp($a->group, $b->group);});
             foreach ($productImageOrdered as $pi) {
 
-                $parsed = json_decode($pi);
+                $parsed = json_decode($pi['thumbs']);
 
                 $imagesObj[$pi['group']] = array('small' => $parsed['small'], 'medium' => $parsed['medium'], 'high' => $parsed['high'], 'original' => $pi['path']);
             }
