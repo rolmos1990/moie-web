@@ -148,4 +148,32 @@ class M_site extends CI_Model{
         );
         $this->db->insert('comentario_novedad',$data);
     }
+
+    function get_banner(){
+        $this->db->order_by('orden', 'asc');
+        $query=$this->db->get('banner');
+        return $query->result();
+    }
+    function nuevo_banner_img($nombre){
+        $this->db->insert('banner',array('nombre' => $nombre, 'enlace' => 'img/como_comprar.jpg'));
+        return $this->db->affected_rows();
+    }
+    function eliminar_banner_img($nombre){
+        $this->db->where('nombre',$nombre);
+        $this->db->delete('banner');
+    }
+    function cambiar_enlace_banner_img($nombre,$enlace){
+        $this->db->query("update banner set enlace='$enlace' where nombre='$nombre'");
+        return $this->db->affected_rows();
+    }
+    function ordenar_banner($bannerJSON){
+        $o=1;
+        $banner=json_decode($bannerJSON);
+        foreach($banner as $s){
+            $query=$this->db->query("update banner set orden=$o where nombre='$s'");
+            $o=$o+1;
+        }
+        return $this->db->affected_rows();
+    }
+
 }
