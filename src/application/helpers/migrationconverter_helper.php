@@ -26,7 +26,7 @@ class migrationconverterhelper {
         $isUnique = false;
         $productSizes = [];
         if(count($product["productSize"]) > 0) {
-            foreach ($product["productSize"] as $ps) {
+            foreach ($product["productSize"] as $key => $ps) {
                 if($ps["quantity"] > 0) {
                     //separar esto en un metodo de conversion aparte...
                     $productSize = Array(
@@ -38,12 +38,17 @@ class migrationconverterhelper {
                     $productSizes[] = $productSize;
 
                     $qty += $ps["quantity"];
+
                     if ($ps["name"] == "UNICA") {
                         $isUnique = true;
                         $sizes = $product["sizeDescription"];
                         //AQUI AGREGAR LA DESCRIPCION DEL PRODUCTO EN LA TALLA
                     } else {
-                        $sizes .= $ps["name"] . "-";
+                        $sizes .= $ps["name"];
+
+                        if ($key !== key($key)) {
+                            $sizes.= '-';
+                        }
                     }
                 }
             }
