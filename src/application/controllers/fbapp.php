@@ -35,11 +35,6 @@ class Fbapp extends CI_Controller {
             $data['producto']=$this->m_site->get_producto($producto);
             $this->load->view('producto',$data);
         }
-        public function producto_mayor($producto){
-            $this->load->model('m_site');
-            $data['producto']=$this->m_site->get_producto_mayor($producto);
-            $this->load->view('producto_mayor',$data);
-        }
         public function consulta($product_id=""){
             if($product_id!=""){
                 $url='http://lilicardenasmodas.ddns.net/index.php/api/product_available_colors/' . $product_id;

@@ -18,19 +18,9 @@ class Api extends CI_Controller {
         $productos=$this->m_site->get_productos($id_categoria);
         echo json_encode($productos);
     }
-    public function productos_mayor($id_categoria){
-        $this->load->model('m_site');
-        $productos=$this->m_site->get_productos_mayor($id_categoria);
-        echo json_encode($productos);
-    }
     public function producto($codigo){
         $this->load->model('m_site');
         $producto = $this->m_site->get_producto($codigo);
-        echo json_encode($producto);
-    }
-    public function producto_mayor($codigo){
-        $this->load->model('m_site');
-        $producto = $this->m_site->get_producto_mayor($codigo);
         echo json_encode($producto);
     }
     public function rotativos(){
@@ -116,14 +106,6 @@ class Api extends CI_Controller {
             }else{
                 http_response_code(500);
             }
-        }
-    }
-    public function disponibilidad($id=""){
-        if($id!=""){
-            $disponibilidad = [];
-            $url='http://lucymodas.ddns.net/api/ext/leer_disponibilidad/' . $id;
-            $disponibilidad = json_decode(file_get_contents($url));
-            echo json_encode($disponibilidad);
         }
     }
     public function testimonio(){

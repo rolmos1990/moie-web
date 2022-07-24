@@ -59,10 +59,6 @@
             <?php } ?>
         <?php } ?>
         <label>Disponibilidad</label>
-        <!--<div id="cargando_disponibilidad">
-            <img src="<?=base_url();?>img/cargando.gif" alt="cargando" /><br>
-            <b>Cargando disponibilidad</b>
-        </div>-->
         <div id="dato_disponibilidad_<?=$producto->codigo;?>" class="dato_disponibilidad" style="display: block">
             <table id="disponibilidad">
                 <?php foreach($disponibilidad as $talla => $colores){ ?>
@@ -104,13 +100,6 @@
             ?>
         </p>
     </div>
-
-
-<!--    <div id="compartir">
-        <h2>Compartir</h2>
-        <div onclick="window.open('http://www.facebook.com/sharer/sharer.php?u=http://lilicardenasmodas.com/','Compartir','width=600,height=400')" class="compartir fondo_facebook"><img src="<?=base_url();?>img/fb_blanco.png"></div>
-        <div onclick="window.open('http://twitter.com/home?status=Mira%20la%20bella%20ropa%20que%20traje%20para%20ti:%20http://lilicardenasmodas.com/','Compartir','width=600,height=400')" class="compartir fondo_twitter"><img src="<?=base_url();?>img/tw_blanco.png"></div>
-    </div>-->
 </div>
 <script>
     var mostrar_imagen = function(numero){

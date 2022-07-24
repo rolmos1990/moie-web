@@ -15,25 +15,6 @@ class Site extends CI_Controller {
         parent::__construct();
     }
 
-    public function test(){
-
-        try {
-            $this->load->model('m_site');
-
-            echo "configuraciones ...";
-            $config=$this->m_site->get_configuraciones();
-            var_dump($config);
-
-            echo "novedades ...";
-            $novedades = $this->m_site->novedades();
-            var_dump($novedades);
-            die();
-
-        } catch (Exception $e) {
-            echo $e->getMessage();
-        }
-    }
-
     public function index(){
         date_default_timezone_set('America/Caracas');
         $this->load->model('m_site');
@@ -133,24 +114,20 @@ class Site extends CI_Controller {
 
         $callService = new callservicehelper();
 
-        if(strtoupper($categoria)=='MAYOR'){
-            $data['productos'] = $this->m_site->get_productos_mayor();
-            $this->load->view('productos_mayor',$data);
-            $this->load->view('compras_al_mayor');
-        }else{
-            //$data['categoria'] = $this->m_site->get_categoria($categoria);
-            $categoriaData = $callService->getCategory($categoria);
-            $data["categoria"] = migrationconverterhelper::category($categoriaData);
 
-            $products = $callService->getProducts(100,0, "category::" . $categoria ."|published::1");
-            $productsData = migrationconverterhelper::products($products["data"]);
+        //$data['categoria'] = $this->m_site->get_categoria($categoria);
+        $categoriaData = $callService->getCategory($categoria);
+        $data["categoria"] = migrationconverterhelper::category($categoriaData);
 
-            $data['productos'] = $productsData;
-            $this->load->view('productos',$data);
-            if($categoria == 9){
-                $this->load->view('panales');
-            }
+        $products = $callService->getProducts(100,0, "category::" . $categoria ."|published::1");
+        $productsData = migrationconverterhelper::products($products["data"]);
+
+        $data['productos'] = $productsData;
+        $this->load->view('productos',$data);
+        if($categoria == 9){
+            $this->load->view('panales');
         }
+
         $this->load->view('bottom');
     }
     public function producto($producto){
@@ -167,28 +144,6 @@ class Site extends CI_Controller {
 
         $data["disponibilidad"] = migrationconverterhelper::sizes($productData);
         $this->load->view('producto',$data);
-    }
-    public function producto_mayor($producto){
-        $this->load->model('m_site');
-        $data['producto']=$this->m_site->get_producto_mayor($producto);
-        $data['disponibilidad'] = $this->group_by('talla',$this->m_site->disponibilidad($producto));
-        $this->load->view('producto_mayor',$data);
-    }
-    public function consulta($id=""){
-        if($id!=""){
-            $disponibilidad = [];
-            $this->load->model('m_site');
-            $disponibilidad = $this->group_by('talla',$this->m_site->disponibilidad($id));
-            return $disponibilidad;
-        }
-    }
-    public function consulta_json($product_id=""){
-        if($product_id!=""){
-            $disponibilidad='';
-            $url='http://' . SERVIDOR_LUCY . '/api/ext/leer_disponibilidad/' . $product_id;
-            $disponibilidad=$disponibilidad . file_get_contents($url);
-            echo $disponibilidad;
-        }
     }
     
     public function como_comprar(){
@@ -289,64 +244,6 @@ class Site extends CI_Controller {
             $this->load->view('bottom');
         }
     }
-    public function renove(){
-        $this->load->model('m_site');
-        
-        
-        $this->top();
-        if($this->input->post('ci_letra')){
-            $e=false;
-            
-            $ci_letra=trim($this->input->post('ci_letra'));
-            $ci_numero=trim($this->input->post('ci_numero'));
-            $catalogo=trim($this->input->post('catalogo'));
-            
-            $error['ci']['letra']=$ci_letra;
-            $error['ci']['numero']=$ci_numero;
-            if($ci_numero==''){
-                $e=true;
-                $error['ci']['error']='La cédula o RIF no puede estar en blanco';
-            }
-            
-            $error['catalogo']['id']=$catalogo;
-            if($catalogo==''){
-                $e=true;
-                $error['catalogo']['error']='El código del catalogo no puede estar en blanco';
-            }
-            
-            if($e){
-                $this->load->view('renove',$error);
-            }else{
-                $ci=$ci_letra . $ci_numero;
-                
-                //$r=@file_get_contents('http://lilicardenasmodas.ddns.net/index.php/api/save_catalog/' . $ci . '/' . $catalogo);
-                $r=@file_get_contents('http://localhost:88/index.php/api/save_catalog/' . $ci . '/' . $catalogo);
-                
-                $result=intval($r);
-                if($result>0){
-                    $this->load->view('renove_exito');
-                }elseif($result==-4){
-                    $error['catalogo']['error']='El codigo ya ha sido activado anteriormente por otra persona';
-                    $this->load->view('renove',$error);
-                }elseif($result==-1){
-                    $error['catalogo']['error']='El codigo introducido corresponde a un catalogo que ya ha caducado';
-                    $this->load->view('renove',$error);
-                }elseif($result==-2){
-                    $error['catalogo']['error']='No existe ningún catálogo con este código';
-                    $this->load->view('renove',$error);
-                }elseif($result==-3){
-                    $error['ci']['error']='No existe ningún cliente registrado con esta cédula de identidad o RIF';
-                    $this->load->view('renove',$error);
-                }else{
-                    $this->load->view('renove_error');
-                }
-                
-            }
-        }else{
-            $this->load->view('renove');
-        }
-        $this->load->view('bottom');
-    }
     function catalogo(){
         date_default_timezone_set('America/Caracas');
         $this->load->model('m_site');
@@ -355,34 +252,6 @@ class Site extends CI_Controller {
         $this->top();
         $this->load->view('catalogo');
         $this->load->view('bottom');
-    }
-    public function guardar_premarketing(){
-        $nombre=$this->input->post('nombre');
-        $telefono=$this->input->post('telefono');
-        $contacto=$nombre . ';' . $telefono;
-        $contactos=fopen('./contactos.json', 'a+');
-        fwrite($contactos, $contacto . PHP_EOL);
-        fclose($contactos);
-        date_default_timezone_set('America/Caracas');
-        $this->load->model('m_site');
-        
-        
-        $this->top();
-        $this->load->view('premarketing_exito');
-    }
-    public function descargar_catalogo(){
-        $this->load->library('zip');
-        $this->load->model('m_site');
-        date_default_timezone_set('America/Caracas');
-        $categorias=$this->m_site->get_categorias();
-        foreach($categorias as $c){
-            $imagenes=$this->m_site->get_imagenes($c->id,'des');
-            foreach($imagenes as $i){
-                $imagen=file_get_contents('./descargable/' . $c->id . '/' . $i->nombre);
-                $this->zip->add_data('/' . $c->nombre . '/' . $i->nombre , $imagen);
-            }   
-        }
-        $this->zip->download('Catalogo_LiliCardenasModas_' . date('d-m-Y_H:i',now()) . '.zip');
     }
     public function tracking(){
         date_default_timezone_set('America/Caracas');
@@ -442,20 +311,6 @@ class Site extends CI_Controller {
             return getimagesize($imagen);
         }
     }
-    public function tracking_info($num_pedido){
-        try{
-            $eventos = json_decode(file_get_contents('http://' . SERVIDOR_LUCY . '/api/ext/rastrear_venta/' . $num_pedido));
-        } catch (Exception $ex) {
-            $eventos = -1;
-        }
-        if($eventos <= 0){
-            echo $eventos;
-        }else{
-            $data['eventos'] = $eventos;
-            $data['num_pedido'] = $num_pedido;
-            $this->load->view('tracking_info',$data);
-        }
-    }
     public function comentario(){
         date_default_timezone_set('America/Caracas');
         $this->load->model('m_site');
@@ -467,45 +322,6 @@ class Site extends CI_Controller {
         $this->m_site->registrar_email($email);
         $this->session->set_userdata('email_promo',$email);
         http_response_code(204);
-    }
-    public function fotos_disponibles($id_categoria=0,$id_producto=''){
-        $this->load->model('m_site');
-        if($id_categoria === 0){
-            $categorias=$this->m_site->get_categorias();
-            foreach($categorias as $categoria){
-                echo '<a href="' . base_url() . 'site/fotos_disponibles/' . $categoria->id . '">' . $categoria->nombre . '</a><br>';
-            }
-        }else{
-            if($id_producto === ''){
-                $categoria=$this->m_site->get_categoria($id_categoria);
-                $productos=$this->m_site->get_productos($id_categoria);
-                echo '<h1>' . $categoria->nombre . '</h1>';
-                foreach ($productos as $producto){
-                    echo '<a href="' . base_url() . 'site/fotos_disponibles/' . $id_categoria . '/' . $producto->codigo . '">' . $producto->codigo . '</a><br>';
-                }
-            }else{
-                $creado = 0;
-                $zipname = $id_producto . '.zip';
-                $zip = new ZipArchive;
-                $zip->open($zipname, ZipArchive::CREATE);
-                $path = 'catalogo/' . $id_categoria . '/' . $id_producto . '_1_800.jpg';
-                if(file_exists($path)){
-                    $zip->addFromString(basename($path),  file_get_contents($path));  
-                    $creado = 1;
-                }
-                $path = 'catalogo/' . $id_categoria . '/' . $id_producto . '_2_800.jpg';
-                if(file_exists($path)){
-                    $zip->addFromString(basename($path),  file_get_contents($path));  
-                    $creado = 1;
-                }
-                $zip->close();
-                if($creado){
-                    header('location: ' . base_url() . $id_producto . '.zip');
-                }else{
-                    echo 'Error al crear el archivo ZIP';
-                }
-            }
-        }
     }
     private function group_by($key, $data) {
         $result = array();
