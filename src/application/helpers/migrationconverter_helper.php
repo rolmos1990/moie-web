@@ -84,7 +84,6 @@ class migrationconverterhelper {
             $discountPercent = $product["category"]["discountPercent"];
         }
 
-        if($qty > 0) {
             $added = array(
                 "codigo" => $product["reference"],
                 "id_categoria" => $product["category"]["id"],
@@ -103,7 +102,6 @@ class migrationconverterhelper {
                 "productSizes" => $productSizes,
                 "productImages" => $imagesObj
             );
-        }
 
         $added = (object) $added;
 
@@ -139,7 +137,9 @@ class migrationconverterhelper {
 
         foreach($products as $product){
             $productAdded = self::product($product);
-            $list[] = $productAdded;
+            if($productAdded->existencia > 0) {
+                $list[] = $productAdded;
+            }
         }
 
         return $list;
