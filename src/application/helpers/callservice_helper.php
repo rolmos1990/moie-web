@@ -55,8 +55,6 @@ class callservicehelper {
 
         $result = $this->callGet(self::URL_PRODUCT, $queryParams);
 
-        var_dump($result); die();
-
         $resultData = json_decode($result, true);
         return $resultData;
     }
