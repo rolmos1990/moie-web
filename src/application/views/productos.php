@@ -25,10 +25,10 @@
                 <?php } ?>
                 <div class="ver_mas"><span>VER TALLAS</span></div>
                 <div class="producto_imagen">
-                    <?php if($p->imagenes > 0 && $p->productImages[0]){ ?>
+                    <?php if($p->imagenes > 0 && isset($p->productImages[0])){ ?>
                     <img src="<?=base_catalog_url() . $p->productImages[0]['medium'];?>" width="238" height="357">
                     <?php
-                    } else if($p->imagenes == 3 || $p->imagenes == 7 && $p->productImages[1]){ ?>
+                    } else if($p->imagenes == 3 || $p->imagenes == 7 && isset($p->productImages[1])){ ?>
                     <img src="<?=base_catalog_url() . $p->productImages[1]['medium'];?>" width="238" height="357">
                     <?php } else { ?>
                     <img src="#" width="238" height="357">
