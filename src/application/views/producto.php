@@ -2,12 +2,12 @@
     <div id="miniaturas">
         <?php
         foreach($producto->productImages as $productImage){ ?>
-        <img id="miniatura_<?=current($producto->productImages);?>" data-img="<?=base_product_catalog_url() . $productImage['small'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
+        <img id="miniatura_<?=$productImage['index'];?>;?>" data-img="<?=$productImage['small'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
         <?php } ?>
     </div>
     <div id="imagen">
         <?php foreach($producto->productImages as $productImage){ ?>
-        <img id="imagen_<?=current($producto->productImages);?>" src="<?=base_product_catalog_url() . $productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
+        <img id="imagen_<?=$productImage['index'];?>" src="<?=$productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
         <?php } ?>
     </div>
     <?php if($producto->descuento > 0){ ?><div id="lazo_descuento"><?=$producto->descuento;?>% Descuento</div><?php } ?>
