@@ -61,7 +61,11 @@ class migrationconverterhelper {
             usort($product['productImage'], function($a, $b) {return strcmp($a['group'], $b['group']);});
             foreach ($product['productImage'] as $pi) {
                 $parsed = $pi['thumbs'];
-                $imagesObj[$pi['group']] = array('small' => $parsed['small'], 'medium' => $parsed['medium'], 'high' => $parsed['high'], 'original' => $pi['path']);
+                $imagesObj[$pi['group']] = array(
+                    'small' => $parsed['small'],
+                    'medium' => $parsed['medium'],
+                    'high' => $parsed['high'],
+                    'original' => $pi['path']);
             }
         }
 
