@@ -1,32 +1,13 @@
 <div id="producto">
     <div id="miniaturas">
         <?php
-        $img = array(3);
-        $imagenes = intval($producto->imagenes);
-        if($imagenes - 4 >= 0){
-            $img[2] = 1;
-            $imagenes = $imagenes - 4;
-        }else{
-            $img[2] = 0;
-        }
-        if($imagenes - 2 >= 0){
-            $img[1] = 1;
-            $imagenes = $imagenes - 2;
-        }else{
-            $img[1] = 0;
-        }
-        if($imagenes - 1 >= 0){
-            $img[0] = 1;
-        }else{
-            $img[0] = 0;
-        }
         foreach($producto->productImages as $productImage){ ?>
-        <img id="miniatura_<?=$productImage['small'];?>" data-img="<?=$productImage['small'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
+        <img id="miniatura_<?=current($producto->productImages);?>" data-img="<?=base_product_catalog_url() . $productImage['small'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
         <?php } ?>
     </div>
     <div id="imagen">
         <?php foreach($producto->productImages as $productImage){ ?>
-        <img id="imagen_<?=$productImage['original'];?>" src="<?=base_product_catalog_url() . $productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
+        <img id="imagen_<?=current($producto->productImages);?>" src="<?=base_product_catalog_url() . $productImage['high'];?>" alt="<?=$producto->codigo;?>" height="600" data-magnify-src="<?=base_product_catalog_url() . $productImage['original'];?>" alt="<?=$producto->codigo;?>">
         <?php } ?>
     </div>
     <?php if($producto->descuento > 0){ ?><div id="lazo_descuento"><?=$producto->descuento;?>% Descuento</div><?php } ?>
