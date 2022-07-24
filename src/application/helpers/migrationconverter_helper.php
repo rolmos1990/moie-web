@@ -84,25 +84,26 @@ class migrationconverterhelper {
             $discountPercent = $product["category"]["discountPercent"];
         }
 
-
-        $added = Array(
-            "codigo" => $product["reference"],
-            "id_categoria" => $product["category"]["id"],
-            "orden" => $product["orden"],
-            "tipo" => $product["category"]["name"],
-            "precio" => $product["price"],
-            "tela" => $product["material"],
-            "tallas" => $sizes,
-            "imagenes" => $images,
-            "existencia" => $qty > 0 ? 1 : 0,
-            "talla_unica" => $isUnique ? 0 : 0,
-            "observaciones" => "",
-            "fecha" => $product["createdAt"],
-            "descuento" => $discountPercent,
-            "precio_descuento" => ceil($priceDiscount),
-            "productSizes" => $productSizes,
-            "productImages" => $imagesObj
-        );
+        if($qty > 0) {
+            $added = array(
+                "codigo" => $product["reference"],
+                "id_categoria" => $product["category"]["id"],
+                "orden" => $product["orden"],
+                "tipo" => $product["category"]["name"],
+                "precio" => $product["price"],
+                "tela" => $product["material"],
+                "tallas" => $sizes,
+                "imagenes" => $images,
+                "existencia" => $qty > 0 ? 1 : 0,
+                "talla_unica" => $isUnique ? 0 : 0,
+                "observaciones" => "",
+                "fecha" => $product["createdAt"],
+                "descuento" => $discountPercent,
+                "precio_descuento" => ceil($priceDiscount),
+                "productSizes" => $productSizes,
+                "productImages" => $imagesObj
+            );
+        }
 
         $added = (object) $added;
 
