@@ -25,8 +25,11 @@ class migrationconverterhelper {
         $qty = 0;
         $isUnique = false;
         $productSizes = [];
+        $lastItem = count($product["productSize"]);
+        $counter = 0;
         if(count($product["productSize"]) > 0) {
             foreach ($product["productSize"] as $key => $ps) {
+                $counter++;
                 if($ps["quantity"] > 0) {
                     //separar esto en un metodo de conversion aparte...
                     $productSize = Array(
@@ -46,7 +49,7 @@ class migrationconverterhelper {
                     } else {
                         $sizes .= $ps["name"];
 
-                        if ($key != key($product["productSize"])) {
+                        if ($counter < $lastItem) {
                             $sizes.= ',';
                         }
                     }
