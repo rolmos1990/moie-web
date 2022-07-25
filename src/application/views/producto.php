@@ -33,8 +33,10 @@
             <label>Tallas</label>
             <?php } ?>
             <?php if(strlen($producto->tallas)>0){ ?>
-                <?php foreach(explode('-',trim($producto->tallas)) as $t){ ?>
+                <?php foreach(explode(',',trim($producto->tallas)) as $t){ ?>
+                <?php if($t != '') { ?>
                 <b id="dato_tallas"><?=$t;?></b>
+                <?php } ?>
                 <?php } ?>
             <?php } ?>
         <?php } ?>
