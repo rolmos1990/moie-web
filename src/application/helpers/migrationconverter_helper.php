@@ -18,6 +18,12 @@ class migrationconverterhelper {
         return $productSizes;
     }
 
+    function checkIsJson($string) {
+        return is_string($string) &&
+            (is_object(json_decode($string)) ||
+                is_array(json_decode($string)));
+    }
+
 
     static function product($product){
 
@@ -71,10 +77,15 @@ class migrationconverterhelper {
             foreach ($product['productImage'] as $pi) {
                 $index++;
                 $parsed = $pi['thumbs'];
+
+                if(migrationconverterhelper::checkIsJson($parsed)){
+                    $parsed = json_decode($parsed, true);
+                }
+
                 $imagesObj[$pi['group']] = array(
-                    'small' => $parsed['small'],
-                    'medium' => $parsed['medium'],
-                    'high' => $parsed['high'],
+                    'small' => array_key_exists('small', $parsed) ? $parsed['small'] : "",
+                    'medium' => array_key_exists('medium', $parsed) ? $parsed['medium'] : "",
+                    'high' => array_key_exists('high', $parsed) ? $parsed['high'] : "",
                     'original' => $pi['path'],
                     'index' => $index);
             }
