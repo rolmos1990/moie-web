@@ -3,14 +3,14 @@
 class callservicehelper {
     private $caller;
 
-    const URL_PRODUCT = "http://ec2-3-85-198-54.compute-1.amazonaws.com:18210/product";
-    const URL_CATEGORY = "http://ec2-3-85-198-54.compute-1.amazonaws.com:18210/category";
+    const URL_PRODUCT = "http://moie.lucymodas.com:18210/product";
+    const URL_CATEGORY = "http://moie.lucymodas.com:18210/category";
 
     function __constructor(){
     }
 
     function getToken(){
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwidXNlcm5hbWUiOiJ5Z29uemFsZXoiLCJpYXQiOjE2NTE0MzA4NTEsImV4cCI6MzMwMjg2NDE2MH0.2seSECKruL8eT9dw8-Qj-UCkjj3qzp8nwkpOG81AVIQ";
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1OTIwNzMyMiwiZXhwIjozMzE4NDE3MDI5fQ.N-JzEqASc5yDiYpNYdlCdqH39t6b6YGnn_EDFmhG8-k";
     }
 
     function callPost($url, $fields) {
