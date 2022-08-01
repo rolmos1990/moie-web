@@ -2,7 +2,7 @@
     <div id="miniaturas">
         <?php
         foreach($producto->productImages as $productImage){ ?>
-        <img id="miniatura_<?=$productImage['index'];?>;?>" data-img="<?=$productImage['index'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
+        <img id="miniatura_<?=$productImage['index'];?>" data-img="<?=$productImage['index'];?>" src="<?=base_product_catalog_url() . $productImage['small']?>" alt="<?=$producto->codigo;?>" height="100">
         <?php } ?>
     </div>
     <div id="imagen">
