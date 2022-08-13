@@ -56,9 +56,7 @@ class callservicehelper {
         ];
         $result = $this->callPost(self::URL_LOGIN, $fields, true);
 
-        $resultData = json_decode($result, true);
-
-        return $resultData;
+        return $result;
 
     }
 
