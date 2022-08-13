@@ -24,3 +24,5 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       TZ: America/Bogota
       HTTP_HOST: ${HTTP_HOST}
+      APP_USERNAME: ${APP_USERNAME}
+      APP_PASSWORD: ${APP_PASSWORD}

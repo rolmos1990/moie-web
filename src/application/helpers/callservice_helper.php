@@ -5,13 +5,14 @@ class callservicehelper {
 
     const URL_PRODUCT = "http://moie.lucymodas.com:18210/product";
     const URL_CATEGORY = "http://moie.lucymodas.com:18210/category";
+    const URL_LOGIN = "http://moie.lucymodas.com:18210/user/login";
 
     function __constructor(){
     }
 
-    function getToken(){
-        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1OTIwNzMyMiwiZXhwIjozMzE4NDE3MDI5fQ.N-JzEqASc5yDiYpNYdlCdqH39t6b6YGnn_EDFmhG8-k";
-    }
+    //function getToken(){
+    //    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1OTIwNzMyMiwiZXhwIjozMzE4NDE3MDI5fQ.N-JzEqASc5yDiYpNYdlCdqH39t6b6YGnn_EDFmhG8-k";
+    //}
 
     function callPost($url, $fields) {
         $fields_string = http_build_query($fields);
@@ -43,6 +44,20 @@ class callservicehelper {
         }
         curl_close($ch);
         return $data;
+    }
+
+    function getToken(){
+        
+        $fields = [
+            "username" => getenv("APP_USERNAME"),
+            "password" => getenv("APP_PASSWORD")
+        ];
+        $result = $this->callPost(self::URL_LOGIN, $fields);
+
+        $resultData = json_decode($result, true);
+
+        return $resultData;
+
     }
 
     function getProducts($limit, $page, $conditional = null){
