@@ -14,16 +14,18 @@ class callservicehelper {
     //    return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTY1OTIwNzMyMiwiZXhwIjozMzE4NDE3MDI5fQ.N-JzEqASc5yDiYpNYdlCdqH39t6b6YGnn_EDFmhG8-k";
     //}
 
-    function callPost($url, $fields) {
+    function callPost($url, $fields, $public = false) {
         $fields_string = http_build_query($fields);
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-            'Authorization: ' . self::getToken(),
-        ));
+        if(!$public) {
+            curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+                'Authorization: ' . self::getToken(),
+            ));
+        }
         $data = curl_exec($ch);
         curl_close($ch);
         return $data;
@@ -52,7 +54,7 @@ class callservicehelper {
             "username" => getenv("APP_USERNAME"),
             "password" => getenv("APP_PASSWORD")
         ];
-        $result = $this->callPost(self::URL_LOGIN, $fields);
+        $result = $this->callPost(self::URL_LOGIN, $fields, true);
 
         $resultData = json_decode($result, true);
 
