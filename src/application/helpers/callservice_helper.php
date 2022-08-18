@@ -15,15 +15,20 @@ class callservicehelper {
     //}
 
     function callPost($url, $fields, $public = false) {
-        $fields_string = http_build_query($fields);
+        //$fields_string = http_build_query($fields);
+        $payload = json_encode( $fields );
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_POST, 1);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $fields_string );
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $payload );
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+            'Content-Type:application/json'
+        ));
         if(!$public) {
             curl_setopt($ch, CURLOPT_HTTPHEADER, array(
                 'Authorization: ' . self::getToken(),
+                'Content-Type:application/json'
             ));
         }
         $data = curl_exec($ch);
@@ -55,7 +60,6 @@ class callservicehelper {
             "password" => getenv("APP_PASSWORD")
         ];
         $result = $this->callPost(self::URL_LOGIN, $fields, true);
-
         $result = json_decode($result, true);
 
         return $result["token"];
