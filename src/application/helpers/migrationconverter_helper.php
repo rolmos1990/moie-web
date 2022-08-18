@@ -28,7 +28,7 @@ class migrationconverterhelper {
     static function product($product){
 
         $sizes = "";
-        $qty = 0;
+        //$qty = 0;
         $isUnique = false;
         $productSizes = [];
         $lastItem = count($product["productSize"]);
@@ -46,7 +46,7 @@ class migrationconverterhelper {
                     $productSize = (object) $productSize;
                     $productSizes[] = $productSize;
 
-                    $qty += $ps["quantity"];
+                    //$qty += $ps["quantity"];
 
                     if ($ps["name"] == "UNICA") {
                         $isUnique = true;
@@ -112,7 +112,7 @@ class migrationconverterhelper {
                 "tela" => $product["material"],
                 "tallas" => $sizes,
                 "imagenes" => $images,
-                "existencia" => $qty > 0 ? 1 : 0,
+                "existencia" => $product['productAvailable']['available'] ? 1 : 0,
                 "talla_unica" => $isUnique ? 0 : 0,
                 "observaciones" => "",
                 "fecha" => $product["createdAt"],
@@ -156,7 +156,7 @@ class migrationconverterhelper {
 
         foreach($products as $product){
             $productAdded = self::product($product);
-            if($productAdded->existencia > 0) {
+            if($productAdded->existencia > 0){
                 $list[] = $productAdded;
             }
         }

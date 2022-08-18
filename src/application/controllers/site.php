@@ -119,7 +119,7 @@ class Site extends CI_Controller {
         $categoriaData = $callService->getCategory($categoria);
         $data["categoria"] = migrationconverterhelper::category($categoriaData);
 
-        $products = $callService->getProducts(1000,0, "category::" . $categoria ."|published::1|available\$gt0");
+        $products = $callService->getProducts(1000,0, "category::" . $categoria ."|published::1");//|available\$gt0
         $productsData = migrationconverterhelper::products($products["data"]);
 
         $data['productos'] = $productsData;
