@@ -56,7 +56,9 @@ class callservicehelper {
         ];
         $result = $this->callPost(self::URL_LOGIN, $fields, true);
 
-        return $result;
+        $result = json_decode($result, true);
+
+        return $result["token"];
 
     }
 
