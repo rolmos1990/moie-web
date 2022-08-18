@@ -56,8 +56,8 @@ class callservicehelper {
     function getToken(){
         
         $fields = [
-            "username" => getenv("APP_USERNAME"),
-            "password" => getenv("APP_PASSWORD")
+            "username" => "admin",
+            "password" => "Moie123."
         ];
         $result = $this->callPost(self::URL_LOGIN, $fields, true);
         $result = json_decode($result, true);
