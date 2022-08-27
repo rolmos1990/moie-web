@@ -31,6 +31,8 @@ COPY src/php.ini $PHP_INI_DIR/conf.d/
 
 # Copy app files
 COPY ./src/ /var/www/html/
+# Copy all payu files
+COPY ./payu/ /var/www/html/
 
 # Install composer dependancies
 #RUN cd /var/www/html/api/ && composer install
