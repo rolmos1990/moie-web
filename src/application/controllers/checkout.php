@@ -30,7 +30,7 @@ class Checkout extends CI_Controller {
         $this->load->model('m_checkout');
         $id_pago = $this->m_checkout->generar($id_venta,$monto,$nombre_cliente,$ci_cliente,$telefono_cliente,$direccion,$ciudad,$sandbox);
 
-        echo 'http://lucymodas.com/checkout/pagar/' . $id_pago;
+        echo base_url() . '/checkout/pagar/' . $id_pago;
     }
     public function pagar($id){
         $this->load->model('m_checkout');
