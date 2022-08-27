@@ -2,7 +2,7 @@
 
 ////
 $log_content=json_encode($_REQUEST);
-$myfile = fopen("logs_payu/response".date("Ymd").".log", "a") or die("Unable to open file!");
+$myfile = fopen("payu/response".date("Ymd").".log", "a") or die("Unable to open file!");
 fwrite($myfile, $log_content);
 fclose($myfile);
 /////
