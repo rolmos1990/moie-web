@@ -1,10 +1,10 @@
 <?php
 
 ////
-$log_content=json_encode($_REQUEST);
-$myfile = fopen("payu/response".date("Ymd").".log", "a") or die("Unable to open file!");
-fwrite($myfile, $log_content);
-fclose($myfile);
+//$log_content=json_encode($_REQUEST);
+//$myfile = fopen("payu/response".date("Ymd").".log", "a") or die("Unable to open file!");
+//fwrite($myfile, $log_content);
+//fclose($myfile);
 /////
 
 $reference_sale = explode("-",$_POST['reference_sale']); // get the order ID.
