@@ -107,7 +107,7 @@ class migrationconverterhelper {
                 "codigo" => $product["reference"],
                 "id_categoria" => $product["category"]["id"],
                 "orden" => $product["orden"],
-                "tipo" => $product["category"]["name"],
+                "tipo" => $product["description"],
                 "precio" => $product["price"],
                 "tela" => $product["material"],
                 "tallas" => $sizes,
