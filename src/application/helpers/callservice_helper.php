@@ -69,9 +69,9 @@ class callservicehelper {
     function getProducts($limit, $page, $conditional = null){
 
         if(!$conditional) {
-            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => "published::1");
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => "published::1", "order" => "orden", "oderType" => "asc");
         } else {
-            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => $conditional);
+            $queryParams = array("limit" => $limit, "offset" => $page, "conditional" => $conditional, "order" => "orden", "oderType" => "asc");
         }
 
         $result = $this->callGet(self::URL_PRODUCT, $queryParams);
