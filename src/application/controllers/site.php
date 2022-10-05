@@ -122,6 +122,14 @@ class Site extends CI_Controller {
         $products = $callService->getProducts(1000,0, "category::" . $categoria ."|published::1");//|available\$gt0
         $productsData = migrationconverterhelper::products($products["data"]);
 
+        usort($productsData, function($a, $b) {
+                if ($a->orden !== $b->orden) {
+                    return $a->orden > $b->orden;
+                }
+
+                return $a->codigo > $b->codigo;
+        });
+
         $data['productos'] = $productsData;
         $this->load->view('productos',$data);
         if($categoria == 9){

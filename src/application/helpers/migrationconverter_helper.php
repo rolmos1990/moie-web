@@ -104,6 +104,7 @@ class migrationconverterhelper {
         }
 
             $added = array(
+                "id" => $product["id"],
                 "codigo" => $product["reference"],
                 "id_categoria" => $product["category"]["id"],
                 "orden" => $product["orden"],
