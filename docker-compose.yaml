@@ -26,3 +26,9 @@ services:
       HTTP_HOST: ${HTTP_HOST}
       APP_USERNAME: ${APP_USERNAME}
       APP_PASSWORD: ${APP_PASSWORD}
+    networks:
+      - app-tier-shared
+
+networks:
+  app-tier-shared:
+    external: true
