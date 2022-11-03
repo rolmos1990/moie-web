@@ -1,0 +1,84 @@
+<section id="reportar-pago">
+	<h1>Reportar Pago</h1>
+	<form name="formularioPago" ng-hide="pago.exito" novalidate>
+		<legend>A continuación, llene el formulario con la información correspondiente al pago que realizó. Recuerde colocar un número de teléfono celular y una dirección de correo electrónico válidos para recibir la notificación del envío de su pedido</legend>
+        <label for="nombre">Nombre completo de quien realiza el pedido</label>
+        <input type="text" name="nombre" ng-model="pago.data.nombre" placeholder="" autocomplete="off" required>
+        <span class="error">{{ pago.error.nombre }}</span>
+
+        <label for="telefono">Número de Teléfono Celular</label>
+        <div>
+            <input type="hidden" value="" name="codigo" ng-model="pago.data.codigo">
+            <input type="text" name="telefono" ng-model="pago.data.telefono" placeholder="Ej.: 555000555" autocomplete="off" required>
+        </div>
+        <span class="error">{{ pago.error.telefono }}</span>
+
+
+        <label for="email">Correo Electrónico</label>
+        <input type="text" name="email" ng-model="pago.data.email" placeholder="Ej.: ejemplo@gmail.com" maxlength="255" autocomplete="off" required>
+        <span class="error">{{ pago.error.email }}</span>
+
+        <label for="forma">Forma de Pago</label>
+        <select name="forma" ng-model="pago.data.forma" autocomplete="off" required>
+            <option value="Depósito">Depósito</option>
+            <option value="Transferencia Bancaria">Transferencia Bancaria</option>
+        </select>
+        <div ng-show="pago.data.forma === 'Transferencia Bancaria'">
+            <label for="origen">Banco Origen</label>
+            <select name="origen" ng-model="pago.data.origen" autocomplete="off">
+                <option value="Banco Agrario">Banco Agrario</option>
+                <option value="Banco AV Villas">Banco AV Villas</option>
+                <option value="Banco Caja Social">Banco Caja Social</option>
+                <option value="Banco Colpatria">Banco Colpatria</option>
+                <option value="Banco Cooperativo Coopcentral">Banco Cooperativo Coopcentral</option>
+                <option value="Banco Davivienda">Banco Davivienda</option>
+                <option value="Banco de Bogota">Banco de Bogota</option>
+                <option value="Banco de Occidente">Banco de Occidente</option>
+                <option value="Banco Falabella">Banco Falabella</option>
+                <option value="Banco Finandina">Banco Finandina</option>
+                <option value="Banco GNB Sudameris">Banco GNB Sudameris</option>
+                <option value="Banco Pichincha">Banco Pichincha</option>
+                <option value="Banco Santander de Negocios Colombia">Banco Santander de Negocios Colombia</option>
+                <option value="Bancolombia">Bancolombia</option>
+                <option value="Bancoomeva">Bancoomeva</option>
+                <option value="BBVA">BBVA</option>
+                <option value="Citibank">Citibank</option>
+                <option value="Coltefinanciera">Coltefinanciera</option>
+                <option value="Confiar">Confiar</option>
+                <option value="Cooperativa Financiera de Antioquia">Cooperativa Financiera de Antioquia</option>
+                <option value="Cotrafa Cooperativa Financiera">Cotrafa Cooperativa Financiera</option>
+                <option value="Financiera Juriscoop">Financiera Juriscoop</option>
+                <option value="Helm Bank">Helm Bank</option>
+                <option value="Banco Multibank">Banco Multibank</option>
+                <option value="Efecty">Efecty</option>
+                <option value="Otro">Otro</option>
+            </select>
+            <span class="error">{{ pago.error.origen }}</span>
+        </div><!--
+        --><div>
+            <label for="banco">Banco<span ng-show="pago.data.forma === 'Transferencia Bancaria'"> Destino</span></label>
+            <select name="banco" ng-model="pago.data.banco" autocomplete="off">
+                <option value="Bancolombia">Bancolombia</option>
+                <option value="Banco de Bogota">Banco de Bogotá</option>
+                <option value="Efecty">Efecty</option>
+            </select>
+            <span class="error">{{ pago.error.banco }}</span>
+        </div>
+
+        <label for="numero">Número de depósito o transferencia</label>
+        <input type="text" name="numero" ng-model="pago.data.numero" autocomplete="off" placeholder="Opcional">
+
+        <label for="monto">Monto del depósito o transferencia</label>
+        <input type="text" name="monto" ng-model="pago.data.monto" placeholder="Ej. 1999.98" maxlength="45" autocomplete="off" required>
+        <span class="error">{{ pago.error.monto }}</span>
+		
+		<button class="pure-button enviar" ng-click="pago.registrar()">Registrar pago</button>
+
+    </form>
+    <div class="exito" ng-show="pago.exito">
+    	<h3>¡Su pago ha sido registrado con éxito!</h3>
+    	<p>En las próximas horas recibirá un mensaje de texto al <strong>{{ pago.data.telefono }}</strong> con la verificación de su pago y en un periodo de 24 horas recibirá otro mensaje de texto con el número de guía para retirar su pedido.</p>
+		<p><img src="res/img/ok.png"><p>
+		<p>¡Gracias por comprar en Lucy Modas Colombia!</p>
+    </diV>
+</section>

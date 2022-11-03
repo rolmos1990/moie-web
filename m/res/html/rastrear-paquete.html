@@ -1,0 +1,22 @@
+<section id="rastrear-paquete">
+	<h1>Rastrear Paquete</h1>
+	<form name="formularioPaquete" novalidate>
+		<label>Ingrese el número de pedido</label>
+		<input type="text" name="id" ng-model="paquete.id" required />
+		<button ng-disabled="formularioPaquete.$invalid || paquete.cargando" ng-click="paquete.rastrear()">Buscar</button>
+	</form>
+	<div class="paquete">
+        <div ng-show="paquete.pedido.error">
+            <span class="error">{{ paquete.pedido.error }}</span>
+        </div>
+        <div class="pure-u-1" ng-show="paquete.pedido.eventos">
+            <h1>Información del pedido #{{ paquete.pedido.id }}</h1>
+            <table>
+                <tr ng-repeat="e in paquete.pedido.eventos">
+                    <td>{{ e.fecha  }}</td>
+                    <td>{{ e.descripcion }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</section>

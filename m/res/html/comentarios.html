@@ -1,0 +1,48 @@
+<section id="comentarios">
+	<h1>Comentarios y Testimonios</h1>
+    <div ng-class="{'cargando': comentarios.registrando}">
+        <form name="formularioComentario" novalidate>
+            <legend>ESCRIBE TU TESTIMONIO</legend>
+
+            <label for="nombre">Nombre y Apellido</label>
+            <input type="text" name="nombre" ng-model="comentarios.data.nombre" required  ng-disabled="comentarios.registrando">
+            
+            <label for="nombre">Califique su experiencia</label>
+            <div>
+                <span class="estrella" ng-class="{'activa':comentarios.data.experiencia >= 1}" ng-click="comentarios.data.experiencia = 1">&#9733;</span>
+                <span class="estrella" ng-class="{'activa':comentarios.data.experiencia >= 2}" ng-click="comentarios.data.experiencia = 2">&#9733;</span>
+                <span class="estrella" ng-class="{'activa':comentarios.data.experiencia >= 3}" ng-click="comentarios.data.experiencia = 3">&#9733;</span>
+                <span class="estrella" ng-class="{'activa':comentarios.data.experiencia >= 4}" ng-click="comentarios.data.experiencia = 4">&#9733;</span>
+                <span class="estrella" ng-class="{'activa':comentarios.data.experiencia >= 5}" ng-click="comentarios.data.experiencia = 5">&#9733;</span>
+            </div>
+            <input type="hidden" name="experiencia" ng-model="comentarios.data.experiencia" required  ng-disabled="comentarios.registrando">
+            
+            <label for="comentario">Comentario</label>
+            <textarea name="comentario" ng-model="comentarios.data.comentario" required  ng-disabled="comentarios.registrando"></textarea>
+
+            <!--<label for="foto">Foto</label>
+            <input type="file" name="foto" ng-model="comentarios.data.foto"  ng-disabled="comentarios.registrando">-->
+            
+            <div class="opciones">
+                <button class="pure-button enviar" ng-click="comentarios.registrar()" ng-disabled="formularioComentario.$invalid || comentarios.registrando">Enviar</button>
+            </div>
+        </form>
+        <div ng-show="comentarios.exito">
+            <h3>¡Tu testimonio ha sido registrado con éxito!</h3>
+        </div>
+    </div>
+    <ul ng-class="{'cargando': comentarios.cargandoLista}">
+        <li ng-repeat="c in comentarios.lista" ng-show="c.nombre">
+            <div class="contenido">
+                <span class="nombre">{{ c.nombre | uppercase }}</span><br>
+                <span class="estrella activa" ng-show="c.experiencia >= 1">&#9733;</span>
+                <span class="estrella activa" ng-show="c.experiencia >= 2">&#9733;</span>
+                <span class="estrella activa" ng-show="c.experiencia >= 3">&#9733;</span>
+                <span class="estrella activa" ng-show="c.experiencia >= 4">&#9733;</span>
+                <span class="estrella activa" ng-show="c.experiencia >= 5">&#9733;</span>
+                <br><cite>{{ c.fecha | fechaMysqlAIso | date:"d/M/y" }}</cite>
+                <p ng-class="{'puntos-suspensivos': c.comentario.length > 120}">{{ c.comentario }}</p>
+            </div>
+        </li>
+    </ul>
+</section>
