@@ -27,6 +27,8 @@ class Checkout extends CI_Controller {
             $sandbox = $data['sandbox'];
         }
 
+        $sandbox = ($sandbox == 1);
+
         $this->load->model('m_checkout');
         $id_pago = $this->m_checkout->generar($id_venta,$monto,$nombre_cliente,$ci_cliente,$telefono_cliente,$direccion,$ciudad,$sandbox);
 
