@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 ////
 //$log_content=json_encode($_REQUEST);
 //$myfile = fopen("payu/response".date("Ymd").".log", "a") or die("Unable to open file!");
@@ -11,7 +12,7 @@ $reference_sale = explode("-",$_POST['reference_sale']); // get the order ID.
 
 //data for payment
 $post = array(
-    'order'=>$reference_sale[0], // Order ID
+    'order'=> $reference_sale[0], // Order ID
     'email'=>$_POST['email_buyer'], // Email
     'phone'=>$_POST['phone'],
     'transaction_id'=>$_POST['transaction_id'],
@@ -26,7 +27,8 @@ $post = array(
 
 //state_pol -> 4 (Aprobado), 6 -> Denegado.
 if($_POST['state_pol'] == '4' || $_POST['state_pol'] == 4){
-    $url = base_product_catalog_url('/payment/gateway/payu/register');
+
+    $url = 'http://moie.lucymodas.com:18210/payment/gateway/payu/register';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
@@ -36,6 +38,7 @@ if($_POST['state_pol'] == '4' || $_POST['state_pol'] == 4){
     curl_setopt($ch, CURLOPT_ENCODING,"");
 
     $data = curl_exec($ch);
+
     echo $data;
 }
 
