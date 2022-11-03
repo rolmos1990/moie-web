@@ -34,7 +34,7 @@ COPY ./src/ /var/www/html/
 # Copy all payu files
 COPY ./payu/ /var/www/html/payu
 # Copy all m mobile files
-COPY ./payu/ /var/www/html/m
+COPY ./m/ /var/www/html/m
 
 # Install composer dependancies
 #RUN cd /var/www/html/api/ && composer install
