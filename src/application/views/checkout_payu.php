@@ -48,7 +48,7 @@
             <input name="shippingAddress" type="hidden" value="<?=$direccion;?>" >
             <input name="shippingAddress2" type="hidden" value="<?=$ciudad;?>" >
             <input name="responseUrl" type="hidden" value="<?= base_url() ?>/site/thanks" >
-            <input name="confirmationUrl" type="hidden" value="<?= base_url() ?>/payu/confirmation.php" >
+            <input name="confirmationUrl" type="hidden" value="<?= base_url() ?>payu/confirmation.php" >
             <input name="paymentMethods" type="hidden" value="<?=$paymentMethods;?>" >
 
             <?php if($sandbox){ ?>

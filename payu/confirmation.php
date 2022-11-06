@@ -25,8 +25,6 @@ $post = array(
     'error_code_bank' => $_POST['error_code_bank']
 );
 
-var_dump($post);
-
 //state_pol -> 4 (Aprobado), 6 -> Denegado.
 if($_POST['state_pol'] == '4' || $_POST['state_pol'] == 4){
 
