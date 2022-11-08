@@ -9,8 +9,13 @@ class Api extends CI_Controller {
         echo "LucyModas Movil API 0.2";
     }
     public function categorias(){
-        $this->load->model('m_site');
-        $categorias=$this->m_site->get_categorias();
+
+        $this->load->helper('callService');
+        $this->load->helper('migrationConverter');
+        $callService = new callservicehelper();
+        $categoriesData = $callService->getCategories(100,0);
+        $categorias = migrationconverterhelper::categories($categoriesData["data"]);
+
         echo json_encode($categorias);
     }
     public function productos($id_categoria){
