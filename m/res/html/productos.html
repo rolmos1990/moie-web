@@ -1,10 +1,10 @@
 <section id="productos">
-    <div class="encabezado"><img ng-src="http://www.lucymodas.com/catalogo/{{ productos.idCategoria }}/config/encabezado.jpg" alt="encabezado" /></div>
+    <div class="encabezado"><img ng-src="http://moie.lucymodas.com:18210/./uploads/categories/{{ c.filenameBanner }}" alt="encabezado" /></div>
 	<ul ng-class="{'cargando': productos.cargando}">
         <li ng-repeat="p in productos.lista track by $index" id="{{p.codigo}}" ng-click="productos.ver(p.codigo)">
             <div class="producto">
                 <div class="imagen">
-                    <img ng-src="http://www.lucymodas.com/catalogo/{{ p.id_categoria }}/{{ p.codigo }}_1_238.jpg" alt="{{ p.codigo }}" />
+                    <img ng-src="http://moie.lucymodas.com:18210/{{p.productImages[1]['medium']}}" alt="{{ p.codigo }}" />
                 </div>
                 <div class="ver_mas">
                     <img src="res/img/ver_mas.png" alt="ver_mas" />

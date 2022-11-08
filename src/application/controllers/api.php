@@ -19,9 +19,32 @@ class Api extends CI_Controller {
         echo json_encode($categorias);
     }
     public function productos($id_categoria){
-        $this->load->model('m_site');
-        $productos=$this->m_site->get_productos($id_categoria);
-        echo json_encode($productos);
+        $categoria = $id_categoria;
+
+        $this->load->helper('callService');
+        $this->load->helper('migrationConverter');
+
+        $callService = new callservicehelper();
+
+
+        //$data['categoria'] = $this->m_site->get_categoria($categoria);
+        $categoriaData = $callService->getCategory($categoria);
+        $data["categoria"] = migrationconverterhelper::category($categoriaData);
+
+        $products = $callService->getProducts(1000,0, "category::" . $categoria ."|published::1");
+        $productsData = migrationconverterhelper::products($products["data"]);
+
+        usort($productsData, function($a, $b) {
+            if ($a->orden !== $b->orden) {
+                return $a->orden > $b->orden;
+            }
+
+            return $a->codigo > $b->codigo;
+        });
+
+        $data['productos'] = $productsData;
+
+        echo json_encode($data['productos']);
     }
     public function producto($codigo){
         $this->load->model('m_site');
