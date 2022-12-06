@@ -49,10 +49,12 @@
         </span>
         <p style="color:red">{{ producto.data.alerta }}</p>
 
-        <div class="disponibilidad" ng-repeat="(talla, color) in producto.data.disponibilidad">
-            <label>Disponibilidad <b>{{ talla }}</b></label>
-                <h4>TALLA {{ talla}}</h4>
-                <span ng-repeat="c in color">{{ c.color }}</span>
+        <div class="disponibilidad" ng-repeat="disponibilidades in producto.data.disponibilidad">
+                <div ng-repeat="d in disponibilidades">
+                <label>Disponibilidad <b>{{ d.name }}</b></label>
+                <h4>TALLA {{ d.name }}</h4>
+                <span>{{ d.color }}</span>
+                </div>
         </div>
 
     </div>
