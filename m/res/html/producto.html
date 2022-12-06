@@ -33,8 +33,7 @@
         <span class="codigo">{{ producto.data.tipo }}: <b>{{ producto.data.codigo }}</b></span><!--
         --><span class="tela">Tela: <b>{{ producto.data.tela }}</b></span>
 
-        <span class="talla" ng-show="producto.data.talla_unica*1">Talla <b>UNICA</b>. sirve para <b>{{ producto.data.tallas }}</b></span>
-        <span class="talla" ng-hide="!producto.data.talla_unica*1">Tallas: <b>{{ producto.data.tallas }}</b></span>
+        <span class="talla">Tallas: <b>{{ producto.data.tallas }}</b></span>
 
         <span class="precio" ng-if="!producto.mayor">
             Precio: <cite>{{ producto.data.precio | currency:"$ " }}</cite> <b>{{ producto.data.precio * (100-producto.data.descuento)/100 | currency:"$ " }}</b> (<img src="res/img/bandera.png" alt="bandera" /> COP)
@@ -50,13 +49,10 @@
         </span>
         <p style="color:red">{{ producto.data.alerta }}</p>
 
-        <div class="disponibilidad" ng-repeat="d in producto.data.disponibilidad">
-            <label>Disponibilidad <b>{{ d.id }}</b></label>
-            
-            <div ng-repeat="t in d.disponibilidad">
-                <h4>TALLA {{ t.talla }}</h4>
-                <span ng-repeat="c in t.colores">{{ c }}</span>
-            </div>
+        <div class="disponibilidad" ng-repeat="(talla, color) in producto.data.disponibilidad">
+            <label>Disponibilidad <b>{{ talla }}</b></label>
+                <h4>TALLA {{ talla}}</h4>
+                <span ng-repeat="c in color">{{ c.color }}</span>
         </div>
 
     </div>
