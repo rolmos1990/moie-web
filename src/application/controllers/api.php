@@ -60,7 +60,7 @@ class Api extends CI_Controller {
         $productData = $callService->getProduct($producto);
 
         $data["producto"] = migrationconverterhelper::product($productData);
-        $data['producto']['disponibilidad'] = migrationconverterhelper::sizes($productData);
+        $data['producto']->disponibilidad = migrationconverterhelper::sizes($productData);
 
         echo json_encode($data["producto"]);
     }
