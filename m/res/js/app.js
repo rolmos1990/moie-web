@@ -273,6 +273,8 @@
                 ];
                 producto.data.alerta = alertas[Math.floor(Math.random() * alertas.length)];
 
+                console.log('producto: ', producto);
+
                 producto.cargando = false;
                 producto.cargarDisponibilidad();
             });
