@@ -58,12 +58,16 @@ class Api extends CI_Controller {
 
         $productData = $callService->getProduct($producto);
 
-        $data["disponibilidad"] = migrationconverterhelper::sizes($productData);
-        $data["producto"] = migrationconverterhelper::product($productData);
+        $productoDetail = migrationconverterhelper::product($productData);
 
-        $data['producto']->disponibilidad = $data["disponibilidad"];
+        $disponibilidad = migrationconverterhelper::sizes($productData);
 
-        echo json_encode($data["producto"], true);
+        $product = array(
+            'producto' => $productoDetail,
+            'disponibilidad' => $disponibilidad
+        );
+
+        echo json_encode($product, true);
     }
 
     public function rotativos(){
