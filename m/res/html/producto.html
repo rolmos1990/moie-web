@@ -48,7 +48,7 @@
             Desde {{producto.data.cantidad_mayor_2}} piezas: <b>{{ producto.data.precio_descuento_mayor_2 | currency:"$ " }}</b> (<img src="res/img/bandera.png" alt="bandera" /> COP)
         </span>
         <p style="color:red">{{ producto.data.alerta }}</p>
-
+        {{ product | json }}
         <div class="disponibilidad" ng-repeat="disponibilidades in producto.data.disponibilidad">
                 <div ng-repeat="d in disponibilidades">
                 <label>Disponibilidad <b>{{ d.name }}</b></label>

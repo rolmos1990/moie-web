@@ -232,9 +232,12 @@
             }
             var id = $routeParams.producto;
             this.data = {};
-            $http.get(api + 'producto/' + id + '/' + producto.mayor).success(function(data){
+            $http.get(api + 'producto/' + id).success(function(data){
+                console.log('data response all: ', data);
                 producto.data = data;
                 producto.data.imagen = [0,0,0];
+                console.log('data disponibilidad: ', data);
+                producto.data.disponibilidad = data.disponibilidad;
                 var img = parseInt(data.imagenes);
                 if(img >= 4){
                     producto.data.imagen[2] = 1;
@@ -282,9 +285,9 @@
         this.cargarDisponibilidad = function(){
             this.cargandoDisponibilidad = true;
             var id = $routeParams.producto;
-            this.data.disponibilidad = {};
+            //this.data.disponibilidad = {};
             $http.get(api + 'disponibilidad/' + id).success(function(data){
-                producto.data.disponibilidad = data;
+                //producto.data.disponibilidad = data;
                 producto.cargandoDisponibilidad = false;
             }).error(function(status,data){
                 producto.cargandoDisponibilidad = false;
