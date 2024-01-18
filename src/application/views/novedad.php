@@ -28,7 +28,7 @@
         <?=nl2br($novedad['contenido']);?>
         <br>
         <div style="width:100%;text-align:right">
-        <div class="fb-share-button" data-href="http://lucymodas.com/site/novedades/<?=$novedad['id'];?>" data-layout="button_count" data-mobile-iframe="true"></div>
+        <div class="fb-share-button" data-href="https://lucymodas.com/site/novedades/<?=$novedad['id'];?>" data-layout="button_count" data-mobile-iframe="true"></div>
         </div>
     </div>
     <div class="comentarios">
