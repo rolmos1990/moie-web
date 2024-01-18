@@ -1,5 +1,5 @@
 <section id="productos">
-    <div class="encabezado"><img ng-src="https://moie2.lucymodas.com/categories/{{ c.filenameBanner }}" alt="encabezado" /></div>
+    <div class="encabezado"><img ng-src="https://moie2.lucymodas.com/categories/{{ c.filenameBanner }}" banner-name="{{ c.filenameBanner }}" alt="encabezado" /></div>
 	<ul ng-class="{'cargando': productos.cargando}">
         <li ng-repeat="p in productos.lista track by $index" id="{{p.codigo}}" ng-click="productos.ver(p.codigo)">
             <div class="producto">
