@@ -1,11 +1,8 @@
 
 RewriteEngine on
-
+RewriteCond %{HTTP_HOST} ^m\.lucymodas\.com$ [OR]
 RewriteCond %{HTTP_HOST} ^www\.m\.lucymodas\.com$
-RewriteRule ^(.*)$ https://m.lucymodas.com/$1 [R=301,L]
-
-RewriteCond %{HTTP_HOST} ^m\.lucymodas\.com$
 RewriteCond %{REQUEST_URI} !^/[0-9]+\..+\.cpaneldcv$
 RewriteCond %{REQUEST_URI} !^/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
-RewriteRule ^m/$ https://lucymodas.com/m/\#/ [NE,R=301,L]
+RewriteRule ^/?$ "https\:\/\/www\.lucymodas\.com\/m\/" [R=301,L]
 
