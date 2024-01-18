@@ -10,7 +10,7 @@ class Site extends CI_Controller {
             $request = parse_url($_SERVER['REQUEST_URI']);
             $path = $request["path"];
             $result = rtrim(str_replace(basename($_SERVER['SCRIPT_NAME']), '', $path), '/');
-            header('Location: https://m.lucymodas.com' . str_replace('site', '#', $result));
+            header('Location: https://www.lucymodas.com/m/' . str_replace('site', '#', $result));
         }   
         parent::__construct();
     }
@@ -102,17 +102,7 @@ class Site extends CI_Controller {
     }
     public function productos($categoria,$producto=false){
         if($categoria==""){
-
-            $iphone = strpos($_SERVER['HTTP_USER_AGENT'],"iPhone");
-            $android = strpos($_SERVER['HTTP_USER_AGENT'],"Android");
-            $palmpre = strpos($_SERVER['HTTP_USER_AGENT'],"webOS");
-            $berry = strpos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
-            $ipod = strpos($_SERVER['HTTP_USER_AGENT'],"iPod");
-            if ($iphone || $android || $palmpre || $ipod || $berry == true) {
-
-            } else {
-                header('location: ' . base_url());
-            }
+            header('location: ' . base_url());
         }
         date_default_timezone_set('America/Caracas');
         $data['ver']=$producto;
