@@ -19,10 +19,10 @@
         <?php } ?>
         <link href="/css/colorbox/colorbox.css?201508102010" rel="stylesheet">
         <!--[if IE]>
-            <script type="text/javascript" src="<?=base_url();?>js/jquery-1.11.2.min.js"></script>
+            <script type="text/javascript" src="/js/jquery-1.11.2.min.js"></script>
         <![endif]-->
         <!--[if !IE]>
-            <!--><script type="text/javascript" src="<?=base_url();?>js/jquery-2.1.1.min.js"></script><!-->
+            <!--><script type="text/javascript" src="/js/jquery-2.1.1.min.js"></script><!-->
         <![endif]-->
       
         <script type="text/javascript" src="/js/jquery.colorbox-min.js"></script>
