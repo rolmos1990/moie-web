@@ -3,9 +3,9 @@
 class callservicehelper {
     private $caller;
 
-    const URL_PRODUCT = "http://moie.lucymodas.com:18210/product";
-    const URL_CATEGORY = "http://moie.lucymodas.com:18210/category";
-    const URL_LOGIN = "http://moie.lucymodas.com:18210/user/login";
+    const URL_PRODUCT = "https://moie2.lucymodas.com/product";
+    const URL_CATEGORY = "https://moie2.lucymodas.com/category";
+    const URL_LOGIN = "https://moie2.lucymodas.com/user/login";
 
     function __constructor(){
     }

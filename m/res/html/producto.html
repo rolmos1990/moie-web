@@ -3,29 +3,29 @@
         <div class="miniaturas">
             <img ng-click="producto.imagen=1" 
                  ng-if="producto.data.productImages[1]"
-                 ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[1]['medium']}}"
+                 ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[1]['medium']}}"
                  alt="{{ producto.data.codigo }}" 
                  height="100">
             <img ng-click="producto.imagen=2" 
                  ng-if="producto.data.productImages[2]"
-                 ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[2]['medium']}}"
+                 ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[2]['medium']}}"
                  alt="{{ producto.data.codigo }}" 
                  height="100">
             <img ng-click="producto.imagen=3" 
                  ng-if="producto.data.productImages[3]"
-                 ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[3]['medium']}}"
+                 ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[3]['medium']}}"
                  alt="{{ producto.data.codigo }}" 
                  height="100">
         </div><!--
         --><div class="grande">
             <div ng-show="producto.imagen === 1">
-                <img ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[1]['high']}}" />
+                <img ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[1]['high']}}" />
              </div>
              <div ng-show="producto.imagen === 2">
-                <img ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[2]['high']}}" />
+                <img ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[2]['high']}}" />
              </div>
              <div ng-show="producto.imagen === 3">
-                <img ng-src="http://moie.lucymodas.com:18210/{{producto.data.productImages[3]['high']}}" />
+                <img ng-src="https://moie2.lucymodas.com/{{producto.data.productImages[3]['high']}}" />
              </div>
         </div>
     </div>

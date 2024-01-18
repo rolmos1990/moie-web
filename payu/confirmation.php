@@ -28,7 +28,7 @@ $post = array(
 //state_pol -> 4 (Aprobado), 6 -> Denegado.
 if($_POST['state_pol'] == '4' || $_POST['state_pol'] == 4){
 
-    $url = 'http://moie.lucymodas.com:18210/payment/gateway/payu/register';
+    $url = 'https://moie2.lucymodas.com/payment/gateway/payu/register';
     $ch = curl_init($url);
     curl_setopt($ch, CURLOPT_POST, true);
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($post));
